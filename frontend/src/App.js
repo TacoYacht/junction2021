@@ -9,9 +9,10 @@ function App() {
       </header>
       <div className="app-content">
         <div className="row">
-          <h2>Sell</h2>
+          <h2>Re-love</h2>
           <h2>Swap</h2>
           <h2>Upcycle</h2>
+          <h2>My Marimekko Products</h2>
         </div>
       </div>
     </div>
