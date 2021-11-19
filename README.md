@@ -3,14 +3,19 @@
 Junction2021 Hackathon project
 
 ## Project explanation
-TBD
+
+Lorem ipsum    
 
 ## Folder structure
+    
     - frontend
-        - Usage: TBD
     - backend
-        - Usage: TBD
 
 ## How to use
-TBD
 
+- Install/Update dependencies: `./install.sh`
+- Start the App: `npm start`
+
+## Notes
+
+- Requires node version 16
