@@ -35,7 +35,6 @@ let products = [
     picture: "<url-to-picture>", // url to picture
     condition: "ugly"
   }
-
 ]
 
 app.get('/', (req, res) => {
