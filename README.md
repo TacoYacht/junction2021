@@ -6,7 +6,10 @@ Junction2021 Hackathon project
 TBD
 
 ## Folder structure
-TBD
+    - frontend
+        - Usage: TBD
+    - backend
+        - Usage: TBD
 
 ## How to use
 TBD
