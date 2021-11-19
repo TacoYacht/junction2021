@@ -7,10 +7,7 @@ app.use(cors())
 app.use(express.json())
 
 const requestLogger = (request, response, next) => {
-  console.log('Method:', request.method)
-  console.log('Path:  ', request.path)
-  console.log('Body:  ', request.body)
-  console.log('---')
+  console.log('Method:', request.method, request.path, request.body)
   next()
 }
 
@@ -18,17 +15,27 @@ app.use(requestLogger)
 
 let products = [
   {
-    id: 1,
-    content: "tuote",
+    id: 1, // Generated id
+    name: "Marimekon paita :)", // Official product name
+    age: "5", // Age in years
+    picture: "<url-to-picture>", // url to picture
+    condition: "good" // Condition good | bad | ugly
   },
   {
-    id: 2,
-    content: "tuote",
+    id: 2, // Generated id
+    name: "Marimekon astia :)", // Official product name
+    age: "3", // Age in years
+    picture: "<url-to-picture>", // url to picture
+    condition: "bad"
   },
   {
-    id: 3,
-    content: "tuote",
+    id: 3, // Generated id
+    name: "Marimekon jou muu tuote :)", // Official product name
+    age: "5", // Age in years
+    picture: "<url-to-picture>", // url to picture
+    condition: "ugly"
   }
+
 ]
 
 app.get('/', (req, res) => {
@@ -55,10 +62,8 @@ app.post('/api/products', (request, response) => {
     })
   }
 
-  const note = {
+  const product = {
     content: body.content,
-    important: body.important || false,
-    date: new Date(),
     id: generateId(),
   }
 
@@ -69,10 +74,10 @@ app.post('/api/products', (request, response) => {
 
 app.get('/api/products/:id', (request, response) => {
   const id = Number(request.params.id)
-  const note = products.find(note => note.id === id)
+  const product = products.find(product => product.id === id)
 
-  if (note) {
-    response.json(note)
+  if (product) {
+    response.json(product)
   } else {
     response.status(404).end()
   }
@@ -80,7 +85,7 @@ app.get('/api/products/:id', (request, response) => {
 
 app.delete('/api/products/:id', (request, response) => {
   const id = Number(request.params.id)
-  products = products.filter(note => note.id !== id)
+  products = products.filter(product => product.id !== id)
 
   response.status(204).end()
 })
