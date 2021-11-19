@@ -15,6 +15,9 @@ Lorem ipsum
 
 - Install/Update dependencies: `./install.sh`
 - Start the App: `npm start`
+- Open browser: `localhost:3001`
+
+- Build new front: `npm build-front`
 
 ## Notes
 
