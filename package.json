@@ -1,5 +1,6 @@
 {
      "scripts": {
-        "start": "(cd backend && npm install && npm start)"
+        "build-front": "(pushd frontend && npm run build && rm -rf ../backend/build && cp -r build ../backend/build && popd)",
+        "start": "(pushd backend && npm install && npm start)"
     }
 }
