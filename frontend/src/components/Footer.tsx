@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useRoute } from "wouter";
+import { Link, useRoute, useLocation } from "wouter";
 
 import { ReactComponent as M } from '../assets/m_logo.svg';
 import { ReactComponent as ShopIcon } from '../assets/shop.svg';
@@ -9,11 +9,13 @@ import { ReactComponent as SearchIcon } from '../assets/search.svg';
 import '../styles/Footer.css';
 
 const ActiveLink = (props: any) => {
-    const [isActive] = useRoute(props.href);
+    const [location] = useLocation();
+    const isActive = location.startsWith(props.href);
+    const [isActive2] = useRoute(props.href2);
 
     return (
         <Link {...props}>
-            <a className={isActive ? "active" : ""}>{props.children}</a>
+            <a className={isActive || (props.href2 !== undefined && isActive2) ? "active" : ""}>{props.children}</a>
         </Link>
     );
 };
@@ -22,7 +24,7 @@ export const Footer = () => {
   return (
     <div className="footer">
         <div className="footer-block">
-            <ActiveLink href="/shop">
+            <ActiveLink href="/shop" href2="/">
                 <ShopIcon title="Shop" />
                 Shop
             </ActiveLink>
@@ -34,7 +36,7 @@ export const Footer = () => {
             </ActiveLink>
         </div>
         <div className="footer-block">
-            <ActiveLink href="/my-items">
+            <ActiveLink href="/my-items" href2="/add-item">
                 <M title="My items" className="marimekko-icon" />
                 My items
             </ActiveLink>

@@ -21,7 +21,8 @@ const itemSchema = new mongoose.Schema({
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
-    status: String,
+    forSale: Boolean,
+    forSwap: Boolean,
     age: String,
     picture: [],
     condition: String,
