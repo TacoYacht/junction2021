@@ -2,6 +2,18 @@ const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema({
     name: String,
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: 'Category'
+    },
+    pattern: {
+      type: Schema.Types.ObjectId,
+      ref: 'Pattern'
+    },
+    originalPrice: Number,
+    image: String,
+    availableColors: [String],
+
 })
 
 productSchema.set('toJSON', {
