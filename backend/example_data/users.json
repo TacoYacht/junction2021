@@ -1,5 +1,22 @@
 [
     {
-        
+        "name": "Porin Marko",
+        "wishlist": [],
+        "size": "XL"
+    },
+    {
+        "name": "Levin Joni",
+        "wishlist": [],
+        "size": "L"
+    },
+    {
+        "name": "Turun Jonna",
+        "wishlist": [],
+        "size": "M"
+    },
+    {
+        "name": "Keravan Tiina",
+        "wishlist": [],
+        "size": "S"
     }
 ]
