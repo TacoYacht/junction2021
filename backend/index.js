@@ -17,6 +17,10 @@ products = {
   
 }
 
+users = {
+  
+}
+
 // Create custom token, include everything else from tiny and
 // add req.body behind
 morgan.token('custom',
@@ -39,7 +43,7 @@ app.get('/api/products', (req, res) => {
   res.json(products)
 })
 
-const generateId = () => {
+const generateProductId = () => {
   const maxId = products.length > 0
     ? Math.max(...products.map(n => n.id))
     : 0
@@ -49,20 +53,23 @@ const generateId = () => {
 app.post('/api/products', (request, response) => {
   const body = request.body
 
-  if (!body.content) {
+  if (!body.name || !body.age || !body.condition) {
     return response.status(400).json({ 
       error: 'content missing' 
     })
   }
 
   const product = {
-    content: body.content,
-    id: generateId(),
+    name: body.name,
+    age: body.age,
+    picture: body.picture,
+    condition: body.condition,
+    id: generateProductId(),
   }
 
-  products = products.concat(note)
+  products.push(product)
 
-  response.json(note)
+  response.json(product)
 })
 
 app.get('/api/products/:id', (request, response) => {
@@ -82,6 +89,58 @@ app.delete('/api/products/:id', (request, response) => {
 
   response.status(204).end()
 })
+
+app.get('/api/users', (req, res) => {
+  res.json(users)
+})
+
+const generateUserId = () => {
+  const maxId = users.length > 0
+    ? Math.max(...users.map(n => n.id))
+    : 0
+  return maxId + 1
+}
+
+app.post('/api/users', (request, response) => {
+  const body = request.body
+
+  if (!body.name || !body.nick) {
+    return response.status(400).json({ 
+      error: 'content missing' 
+    })
+  }
+
+  const user = {
+    name: body.name,
+    nick: body.nick,
+    picture: body.picture,
+    address: body.address,
+    id: generateUserId(),
+  }
+
+  users.push(user)
+
+  response.json(user)
+})
+
+app.get('/api/users/:id', (request, response) => {
+  const id = Number(request.params.id)
+  const user = users.find(user => user.id === id)
+
+  if (user) {
+    response.json(user)
+  } else {
+    response.status(404).end()
+  }
+})
+
+app.delete('/api/users/:id', (request, response) => {
+  const id = Number(request.params.id)
+  users = users.filter(user => user.id !== id)
+
+  response.status(204).end()
+})
+
 
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
