@@ -80,18 +80,16 @@ else if (process.argv[2].toLowerCase() === 'load_products') {
                         return response.status(400).json({ error: 'required content missing' })
                     }
 
-                    // Find Category 
-
-                    // Auth.findOne({nick: 'noname'}, function(err,obj) { console.log(obj); });
-                    const cat = Category.findOne({name: p.category}, () => {})
+                    // Find Category
+                    const category = Category.findOne({name: p.category}, () => {})
 
                     // Find pattern objectID
-                    const pat = Pattern.findOne({name: p.category}, () => {})
+                    const pattern = Pattern.findOne({name: p.pattern}, () => {})
 
                     const product = new Product({
                         name: p.name,
-                        category: cat,
-                        pattern: pat,
+                        category: category,
+                        pattern: pattern,
                     })
 
                     promisesArray.push(product.save())
