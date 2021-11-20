@@ -10,6 +10,8 @@ if (process.argv.length < 3) {
 const Product = require('./models/product')
 const Item = require('./models/item')
 const User = require('./models/user')
+const Category = require('./models/category')
+const Pattern = require('./models/pattern')
 
 const url = process.env.MONGODB_URI
 
@@ -35,7 +37,7 @@ else if (process.argv[2].toLowerCase() === 'get_productmodels') {
     console.log(`product models:`)
     ProductModel.find({}).then(productModel => {
         productModel.forEach(product => {
-          console.log(`Name:${productModel.name}`)
+            console.log(`Name:${productModel.name}`)
         })
         mongoose.connection.close()
     })
@@ -50,7 +52,7 @@ else if (process.argv[2].toLowerCase() === 'get_users') {
     })
 }
 else if (process.argv[2].toLowerCase() === 'get_products') {
-    
+
     console.log(`products:`)
     Product.find({}).then(product => {
         product.forEach(product => {
@@ -66,60 +68,39 @@ else if (process.argv[2].toLowerCase() === 'load_products') {
             console.log("File read failed:", err)
             return
         }
-        console.log('File data:', jsonString) 
+        console.log('File data:', jsonString)
         try {
             const json = JSON.parse(jsonString)
+            promisesArray = []
             json.forEach(
                 p => {
                     console.log(`${p.name}`)
                     // Add json entry to database
                     if (True) { // TBD: add checks here
-                        return response.status(400).json({ error: 'required content missing (either model, owner, age, condition or size)' })
-                      }
+                        return response.status(400).json({ error: 'required content missing' })
+                    }
 
-                      const product = new Product({
-                          // TBD: add fields here
-                      })
-                    
-                      product.save().then(savedProduct => {
-                        response.json(savedProduct)
-                      })
+                    // Find Category 
+
+                    // Auth.findOne({nick: 'noname'}, function(err,obj) { console.log(obj); });
+                    const cat = Category.findOne({name: p.category}, () => {})
+
+                    // Find pattern objectID
+                    const pat = Pattern.findOne({name: p.category}, () => {})
+
+                    const product = new Product({
+                        name: p.name,
+                        category: cat,
+                        pattern: pat,
+                    })
+
+                    promisesArray.push(product.save())
                 }
             )
-
-        } catch(err) {
-            console.log('Error parsing JSON string:', err)
-        }
-    })
-    mongoose.connection.close()
-}
-else if (process.argv[2].toLowerCase() === 'load_item') {
-    // Read product models from json
-    fs.readFile('./example_data/items.json', 'utf8', (err, jsonString) => {
-        if (err) {
-            console.log("File read failed:", err)
-            return
-        }
-        console.log('File data:', jsonString) 
-        try {
-            const json = JSON.parse(jsonString)
-            json.forEach(
-                p => {
-                    console.log(`${p.name}`)
-                    // Add json entry to database
-                    if (True) { // TBD: Add checks here
-                        return response.status(400).json({ error: 'required content missing (either model, owner, age, condition or size)' })
-                      }
-                      const item = new Item({
-                          // TBD: add fields here
-                      })
-                      item.save().then(savedItem => {
-                        response.json(savedItem)
-                      })
-                }
-            )
-
-        } catch(err) {
+            Promise.all(promiseArray).then(() => {
+                mongoose.connection.close()
+            })
+        } catch (err) {
             console.log('Error parsing JSON string:', err)
         }
     })
@@ -127,35 +108,46 @@ else if (process.argv[2].toLowerCase() === 'load_item') {
 }
 else if (process.argv[2].toLowerCase() === 'load_categories') {
     // Read product models from json
-    fs.readFile('./example_data/category.json', 'utf8', (err, jsonString) => {
+    fs.readFile('./example_data/categories.json', 'utf8', (err, jsonString) => {
         if (err) {
             console.log("File read failed:", err)
             return
         }
-        console.log('File data:', jsonString) 
+        console.log('File data:', jsonString)
         try {
             const json = JSON.parse(jsonString)
-            json.forEach(
+            const promiseArray = []
+            json.category.forEach(
                 p => {
-                    console.log(`${p.name}`)
+                    console.log(`Adding ${p.name} to db`)
                     // Add json entry to database
-                    if (True) { // TBD: Add checks here
-                        return response.status(400).json({ error: 'required content missing (either model, owner, age, condition or size)' })
-                      }
-                      const category1 = new Category({
-                          // TBD: add parsing
-                      })
-                      category.save().then(savedCategory => {
-                        response.json(savedCategory)
-                        
-                      })
+                    // if (True === True) { // TBD: Add checks here
+                    //     return response.status(400).json({ error: 'required content missing' })
+                    //   }
+                    // parent category
+                    const parentCategory = new Category({
+                        name: p.name
+                    })
+                    promiseArray.push(parentCategory.save())
+                    
+                    p.subcategory.forEach(
+                        s => {
+                            const newSubcategory = new Category({
+                                name: s.name,
+                                parent: parentCategory
+                            })
+                            promiseArray.push(newSubcategory.save())
+                        }
+                    )
                 }
             )
-        } catch(err) {
+            Promise.all(promiseArray).then(() => {
+                mongoose.connection.close()
+            })
+        } catch (err) {
             console.log('Error parsing JSON string:', err)
         }
     })
-    mongoose.connection.close()
 }
 else if (process.argv[2].toLowerCase() === 'load_items') {
     // Read product models from json
@@ -164,7 +156,7 @@ else if (process.argv[2].toLowerCase() === 'load_items') {
             console.log("File read failed:", err)
             return
         }
-        console.log('File data:', jsonString) 
+        console.log('File data:', jsonString)
         try {
             const json = JSON.parse(jsonString)
             json.forEach(
@@ -172,18 +164,18 @@ else if (process.argv[2].toLowerCase() === 'load_items') {
                     console.log(`${p.name}`)
                     // Add json entry to database
                     if (True) { // TBD: Add checks here
-                        return response.status(400).json({ error: 'required content missing (either model, owner, age, condition or size)' })
-                      }
-                      const user = new User({
-                          // TBD: add fields here
-                      })
-                      user.save().then(savedUser => {
+                        return response.status(400).json({ error: 'required content missing' })
+                    }
+                    const user = new User({
+                        // TBD: add fields here
+                    })
+                    user.save().then(savedUser => {
                         response.json(savedUser)
-                      })
+                    })
                 }
             )
 
-        } catch(err) {
+        } catch (err) {
             console.log('Error parsing JSON string:', err)
         }
     })

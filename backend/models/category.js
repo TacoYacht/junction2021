@@ -2,7 +2,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const categorySchema = new mongoose.Schema({
-    name: String
+    name: String,
+    parent: {
+      type: Schema.Types.ObjectId,
+      ref: 'Category'
+    }
 })
 
 categorySchema.set('toJSON', {
