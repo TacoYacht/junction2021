@@ -43,10 +43,22 @@ app.use(morgan('custom', {
     skip: function (req, res) { return req.method != 'POST' }
 }))
 
-app.get('/api/items', (req, res) => {
-  Item.find({}).then(items => {
-    res.json(items)
+app.get('/api/items', async (request, response) => {
+  const items = await Item.find({}).populate({
+    path: 'product',
+    populate: {
+      path: 'category',
+      populate: {
+        path: 'parent'
+      }
+    }
+  }).populate({
+    path: 'product',
+    populate: {
+      path: 'pattern'
+    }
   })
+  return response.json(items)
 })
 
 app.post('/api/items', (request, response) => {
