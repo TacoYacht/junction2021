@@ -57,7 +57,7 @@ app.get('/api/items', async (request, response) => {
     populate: {
       path: 'pattern'
     }
-  })
+  }).populate('owner')
   return response.json(items)
 })
 
@@ -147,7 +147,7 @@ app.get('/api/users/:id/items', async (request, response) => {
     populate: {
       path: 'pattern'
     }
-  })
+  }).populate('owner')
   response.json(items)
 })
 
