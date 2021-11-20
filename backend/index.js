@@ -6,7 +6,7 @@ const path = require('path')
 
 
 
-const Product = require('./models/product')
+const Item = require('./models/item')
 const User = require('./models/user')
 
 // const PORT = process.env.PORT
@@ -39,20 +39,20 @@ app.use(morgan('custom', {
     skip: function (req, res) { return req.method != 'POST' }
 }))
 
-app.get('/api/products', (req, res) => {
-  Product.find({}).then(products => {
-    res.json(products)
+app.get('/api/items', (req, res) => {
+  Item.find({}).then(items => {
+    res.json(items)
   })
 })
 
-app.post('/api/products', (request, response) => {
+app.post('/api/items', (request, response) => {
   const body = request.body
 
   if ( body.model === undefined || body.owner === undefined || body.age === undefined || body.condition === undefined || body.size === undefined) {
     return response.status(400).json({ error: 'required content missing (either model, owner, age, condition or size)' })
   }
 
-  const product = new Product({
+  const item = new Item({
     model: body.model,
     owner: body.owner,
     age: body.age,
@@ -63,20 +63,20 @@ app.post('/api/products', (request, response) => {
     date: new Date(),
   })
 
-  product.save().then(savedProduct => {
-    response.json(savedProduct)
+  item.save().then(savedItem => {
+    response.json(savedItem)
   })
 })
 
-app.get('/api/products/:id', (request, response) => {
-  Product.findById(request.params.id).then(product => {
-    response.json(product)
+app.get('/api/items/:id', (request, response) => {
+  Item.findById(request.params.id).then(item => {
+    response.json(item)
   })
 })
 
-app.delete('/api/products/:id', (request, response) => {
-  Product.findByIdAndDelete(request.params.id).then(product => {
-    response.json(product)
+app.delete('/api/items/:id', (request, response) => {
+  Item.findByIdAndDelete(request.params.id).then(item => {
+    response.json(item)
   })
 })
 
@@ -116,8 +116,8 @@ app.delete('/api/users/:id', (request, response) => {
   })
 })
 
-app.get('/api/users/:id/products', (request, response) => {
-  Product.find({ owner: request.params.id }).then(products => response.json(products))
+app.get('/api/users/:id/items', (request, response) => {
+  Item.find({ owner: request.params.id }).then(items => response.json(items))
 })
 
 
