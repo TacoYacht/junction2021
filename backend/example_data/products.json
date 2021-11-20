@@ -1,15 +1,9 @@
 [
     {
-        "model": "",
-        "owner": "",
-        "status": "",
-        "age": "",
-        "picture": [
-            "url1",
-            "url2"
-        ],
-        "condition": "",
-        "date": "",
-        "size": ""
+        "category": "",
+        "pattern": "",
+        "originalPrice": "",
+        "availableColors": "",
+        "image": "https://"
     }
 ]
