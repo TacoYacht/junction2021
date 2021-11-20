@@ -14,3 +14,7 @@ export async function getFilteredItems(category?: CategoryEnum): Promise<IItem[]
         console.log(e);
     }
 }
+
+export async function getMyItems() {
+    // todo
+}

@@ -22,7 +22,7 @@ export const Footer = () => {
   return (
     <div className="footer">
         <div className="footer-block">
-            <ActiveLink href="/">
+            <ActiveLink href="/shop">
                 <ShopIcon title="Shop" />
                 Shop
             </ActiveLink>
@@ -34,15 +34,9 @@ export const Footer = () => {
             </ActiveLink>
         </div>
         <div className="footer-block">
-            <ActiveLink href="/my-products">
-                <M title="My products" className="marimekko-icon" />
-                My products
-            </ActiveLink>
-        </div>
-        <div className="footer-block">
-            <ActiveLink href="/discussion">
-                <MessageIcon title="Discussion"  />
-                Discussion
+            <ActiveLink href="/my-items">
+                <M title="My items" className="marimekko-icon" />
+                My items
             </ActiveLink>
         </div>
         <div className="footer-block">

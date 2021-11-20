@@ -23,7 +23,24 @@ h1 {
 }
 
 h2 {
-  font-size: 38px;
+  font-size: 30px;
+  font-weight: 600;
+  margin: inherit;
+}
+
+h3 {
+  font-size: 24px;
   font-weight: 400;
   margin: inherit;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.no-items-view p span {
+  font-weight: 600;
+  color: #F40B35;
 }

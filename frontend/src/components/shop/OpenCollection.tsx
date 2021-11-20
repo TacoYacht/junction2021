@@ -5,16 +5,7 @@ import { CategoryEnum, IItem } from "../../data/model";
 import { getFilteredItems } from "../../data/queries";
 
 import placeholder from "../../assets/placeholder.jpg";
-
-const ItemCard = ({ item }: { item: IItem }) => {
-    const imageUrl: string = !!item.picture ? item.picture[0] : placeholder;
-
-    return (
-        <div className="item-card">
-            <img src={imageUrl} title={item.product.name} />
-        </div>
-    )
-}
+import { ItemCard } from "../ItemCard";
 
 export const OpenCollection = (params) => {
     const [items, setItems] = useState<IItem[]>();
@@ -32,10 +23,7 @@ export const OpenCollection = (params) => {
     }
 
     return (
-        <div className="collection">
-            <div className="collection-name">
-                {category}
-            </div>
+        <div className="open-collection">
             <div className="items">
                 {!!items && items.map((item, i) => {
                     return (

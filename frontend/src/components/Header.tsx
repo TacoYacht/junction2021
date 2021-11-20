@@ -14,9 +14,9 @@ export const Header = () => {
     const pages: Record<string, string> = {
         "shop": "Shop",
         "explore": "Explore",
-        "my-products": "My products",
-        "discussion": "Discussion",
+        "my-items": "My items",
         "profile": "Profile",
+        "add-item": "Add new item",
     }
 
     function getActivePage(): string {

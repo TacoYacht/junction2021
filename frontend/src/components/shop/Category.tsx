@@ -6,17 +6,17 @@ import { getFilteredItems } from "../../data/queries";
 
 import placeholder from "../../assets/placeholder.jpg";
 
-const ItemCard = ({ item }: { item: IItem }) => {
+const ItemPreview = ({ item }: { item: IItem }) => {
     const imageUrl: string = !!item.picture ? item.picture[0] : placeholder;
 
     return (
-        <div className="item-card">
+        <div className="item-preview">
             <img src={imageUrl} title={item.product.name} />
         </div>
     )
 }
 
-export const Collection = ({ type }: { type: CategoryEnum }) => {
+export const Category = ({ type, addFilter }: { type: CategoryEnum; addFilter }) => {
     const [location, setLocation] = useLocation();
     const [items, setItems] = useState<IItem[]>();
 
@@ -32,18 +32,19 @@ export const Collection = ({ type }: { type: CategoryEnum }) => {
     }
 
     function goToCollection() {
-        setLocation(`/shop/${type}`)
+        setLocation(`/shop/${type}`);
+        addFilter(type);
     }
 
     return (
-        <div className="collection" onClick={goToCollection}>
-            <div className="collection-name">
+        <div className="category" onClick={goToCollection}>
+            <div className="category-name">
                 {type}
             </div>
             <div className="items">
                 {!!items && items.map((item, i) => {
                     return (
-                        <ItemCard item={item} key={i} />
+                        <ItemPreview item={item} key={i} />
                     )
                 })}
             </div>

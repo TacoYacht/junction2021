@@ -4,6 +4,7 @@ export interface IItem {
     status: string;
     age: number;
     picture: string[];
+    price?: string;
     condition: string;
     created: string;
     size: string;

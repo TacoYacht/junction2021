@@ -1,10 +1,9 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Redirect } from "wouter";
 
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import { OpenCollection } from "./components/shop/OpenCollection";
+import { MyItems } from "./components/MyItems";
 import { Shop } from "./components/shop/Shop";
-import { CategoryEnum } from "./data/model";
 
 import './styles/App.css';
 
@@ -14,14 +13,14 @@ function App() {
       <Header />
       <div className="app-content">
         <Switch>
-          <Route path="/">
-            <Shop />
-          </Route>
+          <Route path="/" component={Shop} />
+          <Route path="/shop" component={Shop} />
+          <Route path="/shop/:category" component={Shop} />
           <Route path="/explore">
             <h2>Explore</h2>
           </Route>
-          <Route path="/my-products">
-            <h2>My products</h2>
+          <Route path="/my-items">
+            <MyItems />
           </Route>
           <Route path="/discussion">
             <h2>Discuss</h2>
@@ -29,7 +28,9 @@ function App() {
           <Route path="/profile">
             <h2>My profile</h2>
           </Route>
-          <Route path="/shop/:category" component={OpenCollection} />
+          <Route path="/add-item">
+            <h2>Add new item here</h2>
+          </Route>
         </Switch>
       </div>
       <Footer />
