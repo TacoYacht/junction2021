@@ -1,23 +1,15 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const productSchema = new mongoose.Schema({
+const categorySchema = new mongoose.Schema({
     name: String,
-    category: {
+    parent: {
       type: Schema.Types.ObjectId,
       ref: 'Category'
-    },
-    pattern: {
-      type: Schema.Types.ObjectId,
-      ref: 'Pattern'
-    },
-    originalPrice: Number,
-    image: String,
-    availableColors: [String],
-
+    }
 })
 
-productSchema.set('toJSON', {
+categorySchema.set('toJSON', {
     transform: (document, returnedObject) => {
       returnedObject.id = returnedObject._id.toString()
       delete returnedObject._id
@@ -25,4 +17,4 @@ productSchema.set('toJSON', {
     }
 })
 
-module.exports = mongoose.model('Product', productSchema)
+module.exports = mongoose.model('Category', categorySchema)

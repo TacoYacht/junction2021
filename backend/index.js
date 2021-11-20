@@ -8,6 +8,7 @@ const path = require('path')
 
 const Item = require('./models/item')
 const User = require('./models/user')
+const Product = require('./models/product')
 
 // const PORT = process.env.PORT
 const app = express()
@@ -48,19 +49,19 @@ app.get('/api/items', (req, res) => {
 app.post('/api/items', (request, response) => {
   const body = request.body
 
-  if ( body.model === undefined || body.owner === undefined || body.age === undefined || body.condition === undefined || body.size === undefined) {
+  if ( body.product === undefined || body.owner === undefined || body.age === undefined || body.condition === undefined || body.size === undefined) {
     return response.status(400).json({ error: 'required content missing (either model, owner, age, condition or size)' })
   }
 
   const item = new Item({
-    model: body.model,
+    product: body.product,
     owner: body.owner,
     age: body.age,
     picture: body.picture || [],
     condition: body.condition,
     size: body.size,
     status: body.status || 'Not on sale',
-    date: new Date(),
+    created: new Date(),
   })
 
   item.save().then(savedItem => {
@@ -118,6 +119,13 @@ app.delete('/api/users/:id', (request, response) => {
 
 app.get('/api/users/:id/items', (request, response) => {
   Item.find({ owner: request.params.id }).then(items => response.json(items))
+})
+
+
+app.get('/api/products', (req, res) => {
+  Product.find({}).then(products => {
+    res.json(products)
+  })
 })
 
 
