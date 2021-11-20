@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
+const path = require('path')
 
 
 
@@ -121,7 +122,11 @@ app.get('/api/users/:id/products', (request, response) => {
 
 
 const unknownEndpoint = (request, response) => {
-  response.status(404).send({ error: 'unknown endpoint' })
+  response.sendFile(path.join(__dirname, '/build/index.html'), function(err) {
+    if (err) {
+      response.status(500).send(err)
+    }
+  })
 }
 
 app.use(unknownEndpoint)
