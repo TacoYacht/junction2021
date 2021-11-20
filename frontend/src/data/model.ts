@@ -1,6 +1,6 @@
 export interface IItem {
     product: IProduct;
-    owner: any;
+    owner: IUser;
     status: string;
     age: number;
     picture: string[];
@@ -20,6 +20,13 @@ export interface IProduct {
     category: ICategory;
     print: string;
     name: string;
+}
+
+export interface IUser {
+    name: string;
+    size: string;
+    zipCode: string;
+    id: string;
 }
 
 export enum CategoryEnum {

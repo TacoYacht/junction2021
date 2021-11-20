@@ -18,7 +18,7 @@ export const ItemCard = ({ item }: { item: IItem }) => {
                     <span className="price">{item.price + " €"}</span>
                 </div>
                 <div className="item-card-row">
-                    <span className="seller">{item.owner}</span>
+                    <span className="seller">{item.owner.name}</span>
                     <span className="condition">{item.condition}</span>
                     <span className="size">{item.size}</span>
                 </div>
