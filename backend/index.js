@@ -9,6 +9,8 @@ const path = require('path')
 const Item = require('./models/item')
 const User = require('./models/user')
 const Product = require('./models/product')
+const Category = require('./models/category')
+const Pattern = require('./models/pattern')
 
 // const PORT = process.env.PORT
 const app = express()
@@ -62,6 +64,7 @@ app.post('/api/items', (request, response) => {
     size: body.size,
     status: body.status || 'Not on sale',
     created: new Date(),
+    price: body.price || null
   })
 
   item.save().then(savedItem => {
@@ -128,6 +131,71 @@ app.get('/api/products', (req, res) => {
   })
 })
 
+app.post('/api/products', (request, response) => {
+  const body = request.body
+
+  if ( body.name === undefined  || body.category === undefined || body.pattern === undefined || body.originalPrice === undefined || body.availableColors === undefined) {
+    return response.status(400).json({ error: 'name, category, pattern, originalPrice or availableColors missing' })
+  }
+
+  const product = new Product({
+    name: body.name,
+    category: body.category,
+    pattern: body.pattern,
+    originalPrice: body.originalPrice,
+    availableColors: body.availableColors
+  })
+
+  product.save().then(savedProduct => {
+    response.json(savedProduct)
+  })
+})
+
+app.post('/api/patterns', (request, response) => {
+  const body = request.body
+
+  if ( body.name === undefined  || body.designer === undefined) {
+    return response.status(400).json({ error: 'name or designer missing' })
+  }
+
+  const pattern = new Pattern({
+    name: body.name,
+    designer: body.designer
+  })
+
+  pattern.save().then(savedPattern => {
+    response.json(savedPattern)
+  })
+})
+
+app.post('/api/categories', (request, response) => {
+  const body = request.body
+
+  if ( body.name === undefined  || body.designer === undefined) {
+    return response.status(400).json({ error: 'name or designer missing' })
+  }
+
+  const pattern = new Pattern({
+    name: body.name,
+    designer: body.designer
+  })
+
+  pattern.save().then(savedPattern => {
+    response.json(savedPattern)
+  })
+})
+
+app.get('/api/categories', (req, res) => {
+  Category.find({}).then(categories => {
+    res.json(categories)
+  })
+})
+
+app.get('/api/patterns', (req, res) => {
+  Pattern.find({}).then(patterns => {
+    res.json(patterns)
+  })
+})
 
 const unknownEndpoint = (request, response) => {
   response.sendFile(path.join(__dirname, '/build/index.html'), function(err) {
