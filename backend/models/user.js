@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 const userSchema = new mongoose.Schema({
     name: String,
     size: String,
+    zipCode: String
 })
 
 userSchema.set('toJSON', {

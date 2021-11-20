@@ -94,14 +94,14 @@ app.get('/api/users', (req, res) => {
 app.post('/api/users', (request, response) => {
   const body = request.body
 
-  if ( body.name === undefined  || body.size === undefined) {
-    return response.status(400).json({ error: 'name or size missing' })
+  if ( body.name === undefined  || body.size === undefined || body.zipCode) {
+    return response.status(400).json({ error: 'name, size or zipCode missing' })
   }
 
   const user = new User({
     name: body.name,
     size: body.size,
-    wishlist: []
+    zipCode: body.zipCode
   })
 
   user.save().then(savedUser => {
