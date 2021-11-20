@@ -91,7 +91,7 @@
         "category": "Shirts",
         "originalPrice": "165",
         "availableColors": [
-            "black, gray",
+            "black, gray"
         ],
         "image": "https://www.marimekko.com/media/catalog/product/0/4/046142-252_X192911_10_1631856685.jpg"
     },
@@ -103,5 +103,5 @@
             "black"
         ],
         "image": "https://www.marimekko.com/media/catalog/product/0/9/090593-900_X199785_20_1621234728.jpg"
-    },
+    }
 ]

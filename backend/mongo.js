@@ -167,8 +167,9 @@ else if (process.argv[2].toLowerCase() === 'load_users') {
 }
 else if (process.argv[2].toLowerCase() === 'load_items') {
     // Get random user
-    const conditions = ['good', 'decent', 'bad']
-    const status_options = ['public', 'private', 'for sale']
+    const conditions = ['New', 'Excellent', 'Good', 'Decent', 'Needs repair']
+    const condition_prices = [0.8, 0.7, 0.6, 0.5, 0.3]
+    const bool_options = [true, false]
     const size_options = ['XL', 'L', 'M', 'S']
 
     function randomDate(start, end) {
@@ -183,17 +184,18 @@ else if (process.argv[2].toLowerCase() === 'load_items') {
         const users = await User.find({})
         try {
             const json = JSON.parse(jsonString)
-            console.log(json)
-            // Take 100 times random sample from json
+            // Take 20 times random sample from json
             for (let x = 0; x < 20; x++) {
                 const randItem = json[Math.floor(Math.random() * json.length)]
+                const randConditionIndex = Math.floor(Math.random() * conditions.length)
 
                 const item = new Item({
                     owner: users[Math.floor(Math.random() * users.length)],
-                    conditions: conditions[Math.floor(Math.random() * conditions.length)],
-                    status: status_options[Math.floor(Math.random() * status_options.length)],
+                    condition: conditions[randConditionIndex],
+                    sell_status: bool_options[Math.floor(Math.random() * bool_options.length)],
+                    swap_status: bool_options[Math.floor(Math.random() * bool_options.length)],
                     age: Math.floor(Math.random() * (20 + 1)),
-                    price: Number(Math.floor(Math.random() * (300 + 1))),
+                    price: (randItem.originalPrice * condition_prices[randConditionIndex]),
                     size: size_options[Math.floor(Math.random() * size_options.length)],
                     date: randomDate(new Date(2012, 0, 1), new Date()),
                     picture: randItem.image,

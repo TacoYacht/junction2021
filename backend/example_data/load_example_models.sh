@@ -4,4 +4,4 @@ node mongo.js load_patterns
 node mongo.js load_products
 node mongo.js load_users
 node mongo.js load_items
-node mongo.js generate_wishes
+node mongo.js generate_wishlists
