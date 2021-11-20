@@ -10,8 +10,14 @@ export interface IItem {
     size: string;
 }
 
+export interface ICategory {
+    name: string;
+    id: string;
+    parent?: ICategory;
+}
+
 export interface IProduct {
-    category: string;
+    category: ICategory;
     print: string;
     name: string;
 }
@@ -19,5 +25,6 @@ export interface IProduct {
 export enum CategoryEnum {
     CLOTHING = "Clothing",
     BAGS = "Bags",
+    KNITS = "Knits",
     HOME = "Home"
 }

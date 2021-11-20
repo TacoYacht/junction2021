@@ -42,7 +42,7 @@ export const Category = ({ type, addFilter }: { type: CategoryEnum; addFilter })
                 {type}
             </div>
             <div className="items">
-                {!!items && items.map((item, i) => {
+                {!!items && items.slice(0, 5).map((item, i) => {
                     return (
                         <ItemPreview item={item} key={i} />
                     )
