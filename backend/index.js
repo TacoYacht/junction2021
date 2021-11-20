@@ -6,6 +6,7 @@ const cors = require('cors')
 
 
 const Product = require('./models/product')
+const User = require('./models/user')
 
 // const PORT = process.env.PORT
 const app = express()
@@ -18,10 +19,6 @@ app.use(morgan('tiny', {
   skip: function (req, res) { return req.method == 'POST' }
 }))
 
-
-users = {
-  
-}
 
 // Create custom token, include everything else from tiny and
 // add req.body behind
@@ -46,13 +43,6 @@ app.get('/api/products', (req, res) => {
     res.json(products)
   })
 })
-
-const generateProductId = () => {
-  const maxId = products.length > 0
-    ? Math.max(...products.map(n => n.id))
-    : 0
-  return maxId + 1
-}
 
 app.post('/api/products', (request, response) => {
   const body = request.body
@@ -84,61 +74,49 @@ app.get('/api/products/:id', (request, response) => {
 })
 
 app.delete('/api/products/:id', (request, response) => {
-  const id = Number(request.params.id)
-  products = products.filter(product => product.id !== id)
-
-  response.status(204).end()
+  Product.findByIdAndDelete(request.params.id).then(product => {
+    response.json(product)
+  })
 })
 
 app.get('/api/users', (req, res) => {
-  res.json(users)
+  User.find({}).then(users => {
+    res.json(users)
+  })
 })
-
-const generateUserId = () => {
-  const maxId = users.length > 0
-    ? Math.max(...users.map(n => n.id))
-    : 0
-  return maxId + 1
-}
 
 app.post('/api/users', (request, response) => {
   const body = request.body
 
-  if (!body.name || !body.nick) {
-    return response.status(400).json({ 
-      error: 'content missing' 
-    })
+  if ( body.name === undefined  || body.size === undefined) {
+    return response.status(400).json({ error: 'name or size missing' })
   }
 
-  const user = {
+  const user = new User({
     name: body.name,
-    nick: body.nick,
-    picture: body.picture,
-    address: body.address,
-    id: generateUserId(),
-  }
+    size: body.size,
+    wishlist: []
+  })
 
-  users.push(user)
-
-  response.json(user)
+  user.save().then(savedUser => {
+    response.json(savedUser)
+  })
 })
 
 app.get('/api/users/:id', (request, response) => {
-  const id = Number(request.params.id)
-  const user = users.find(user => user.id === id)
-
-  if (user) {
+  User.findById(request.params.id).then(user => {
     response.json(user)
-  } else {
-    response.status(404).end()
-  }
+  })
 })
 
 app.delete('/api/users/:id', (request, response) => {
-  const id = Number(request.params.id)
-  users = users.filter(user => user.id !== id)
+  User.findByIdAndDelete(request.params.id).then(user => {
+    response.json(user)
+  })
+})
 
-  response.status(204).end()
+app.get('/api/users/:id/products', (request, response) => {
+  Product.find({ owner: request.params.id }).then(products => response.json(products))
 })
 
 

@@ -5,15 +5,12 @@ if (process.argv.length < 3) {
     console.log('need one argument (add|get)')
     process.exit(1)
 }
-const url = process.env.MONGODB_URI
-mongoose.connect(url)
 
-const productSchema = new mongoose.Schema({
-    name: String,
-    age: String,
-    picture: String,
-    condition: String
-})
+const product = require('.models/product')
+
+const url = process.env.MONGODB_URI
+
+mongoose.connect(url)
 
 const Product = mongoose.model('Product', productSchema)
 
