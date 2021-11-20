@@ -16,8 +16,8 @@
         "pattern": "Tasaraita",
         "originalPrice": "65",
         "availableColors": [
-            "black-blue",
-            "white-red"
+            "black, blue",
+            "white, red"
         ],
         "image": "https://www.marimekko.com/media/catalog/product/0/9/090392-838_X191727_10_1632899854.jpg"
     },
@@ -25,9 +25,9 @@
         "name": "Matkalla Kivet",
         "category": "Coats & Jackets",
         "pattern": "Kivet",
-        "originalPrice": "65",
+        "originalPrice": "480",
         "availableColors": [
-            "black-grey"
+            "black, gray"
         ],
         "image": "https://www.marimekko.com/media/catalog/product/0/9/090143-099_X192915_10_1631716444.jpg"
     },
@@ -39,5 +39,69 @@
             "black"
         ],
         "image": "https://www.marimekko.com/media/catalog/product/0/4/049569-990_X175807_20_1611458249.jpg"
-    }
+    },
+    {
+        "name": "Enni Pieni Unikko",
+        "category": "Canvas bags",
+        "originalPrice": "225",
+        "availableColors": [
+            "black, gray"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/4/047583-999_X136756_20_1598366634.jpg"
+    },
+    {
+        "name": "Oiva / Juhla Unikko (2 pcs)",
+        "category": "Kitchen & dining",
+        "originalPrice": "44",
+        "availableColors": [
+            "black, white"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/7/071003-190_X175264_10_1610769333.jpg"
+    },
+    {
+        "name": "Musta Tamma",
+        "category": "Home decor",
+        "originalPrice": "155",
+        "availableColors": [
+            "brown, blue, white"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/7/071145-810_X184814_20_1624506573.jpg"
+    },
+    {
+        "name": "Umpu",
+        "category": "Home decor",
+        "originalPrice": "115",
+        "availableColors": [
+            "amber",
+            "clay"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/7/070942-200_X174132_10_1606124268.jpg"
+    },
+    {
+        "name": "Oksien Seireeni",
+        "category": "Skirts",
+        "originalPrice": "250",
+        "availableColors": [
+            "black, gray, white"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090352-169_X191678_10_1631714776.jpg"
+    },
+    {
+        "name": "Jokapoika 2017",
+        "category": "Shirts",
+        "originalPrice": "165",
+        "availableColors": [
+            "black, gray",
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/4/046142-252_X192911_10_1631856685.jpg"
+    },
+    {
+        "name": "Gratha",
+        "category": "Leather bags",
+        "originalPrice": "270",
+        "availableColors": [
+            "black"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090593-900_X199785_20_1621234728.jpg"
+    },
 ]
