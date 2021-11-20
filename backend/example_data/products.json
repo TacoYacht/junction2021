@@ -1,9 +1,43 @@
 [
     {
-        "category": "",
-        "pattern": "",
-        "originalPrice": "",
-        "availableColors": "",
-        "image": "https://"
+        "name": "Polkujen Unikko",
+        "category": "Knits",
+        "pattern": "Unikko",
+        "originalPrice": "260",
+        "availableColors": [
+            "white",
+            "black"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090278-099_X191871_10_1630068092.jpg"
+    },
+    {
+        "name": "Pitkähiha",
+        "category": "Shirts",
+        "pattern": "Tasaraita",
+        "originalPrice": "65",
+        "availableColors": [
+            "black-blue",
+            "white-red"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090392-838_X191727_10_1632899854.jpg"
+    },
+    {
+        "name": "Matkalla Kivet",
+        "category": "Coats & Jackets",
+        "pattern": "Kivet",
+        "originalPrice": "65",
+        "availableColors": [
+            "black-grey"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090143-099_X192915_10_1631716444.jpg"
+    },
+    {
+        "name": "Kaste",
+        "category": "Canvas bags",
+        "originalPrice": "155",
+        "availableColors": [
+            "black"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/4/049569-990_X175807_20_1611458249.jpg"
     }
 ]

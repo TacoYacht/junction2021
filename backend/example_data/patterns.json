@@ -1,72 +1,67 @@
 [
     { 
         "name": "Unikko",
-        "designer": "",
-        "image": ""
+        "designer": "Maija Isola",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/U/n/Unikko_001_maripedia.png"
     },
     { 
         "name": "Paratiisi",
-        "designer": "",
-        "image": ""
+        "designer": "Fujiwo Ishimoto",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/P/a/Paratiisi_003_maripedia.png"
     },
     { 
         "name": "Kivet",
-        "designer": "",
-        "image": ""
+        "designer": "Maija Isola",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/K/i/Kivet_1_maripedia.png"
     },
     { 
         "name": "Tasaraita",
-        "designer": "",
-        "image": ""
+        "designer": "Annika Rimala",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/T/a/Tasaraita_068_maripedia.png"
     },
     { 
         "name": "Pallo",
-        "designer": "",
-        "image": ""
+        "designer": "Annika Rimala",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/P/a/Pallo_red_maripedia.png"
     },
     { 
         "name": "Nadja",
-        "designer": "",
-        "image": ""
+        "designer": "Vuokko Eskolin-Nurmesniemi",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/N/a/Nadja_014_maripedia.png"
     },
     { 
         "name": "Piccolo",
-        "designer": "",
-        "image": ""
+        "designer": "Vuokko Eskolin-Nurmesniemi",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/P/i/Piccolo_790_maripedia.png"
     },
     { 
         "name": "Siirtolapuutarha",
-        "designer": "",
-        "image": ""
+        "designer": "Maija Louekari",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/S/i/Siirtolapuutarha_160_maripedia.png"
     },
     { 
         "name": "Appelsiini",
-        "designer": "",
-        "image": ""
+        "designer": "Maija Isola",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/A/p/Appelsiini_389_maripedia.png"
     },
     { 
         "name": "Taifuuni",
-        "designer": "",
-        "image": ""
+        "designer": "Maija Isola",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/T/a/Taifuuni_737_maripedia.png"
     },
     { 
         "name": "Seireeni",
-        "designer": "",
-        "image": ""
+        "designer": "Maija Isola",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/S/e/Seireeni_515_maripedia.png"
     },
     { 
         "name": "Kaivo",
-        "designer": "",
-        "image": ""
+        "designer": "Maija Isola",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/K/a/Kaivo_198_maripedia.png"
     },
     { 
         "name": "Vellamo",
-        "designer": "",
-        "image": ""
-    },
-    { 
-        "name": "Pieni Unikko",
-        "designer": "",
-        "image": ""
+        "designer": "Maija Louekari",
+        "image": "https://www.marimekko.com/media/maripedia/pattern/V/e/Vellamo_190_maripedia.png"
     }
 ]
