@@ -1,45 +1,39 @@
+require('dotenv').config()
 const express = require('express')
-const app = express()
+const morgan = require('morgan')
 const cors = require('cors')
 
-app.use(express.static('build'))
+const app = express()
 app.use(cors())
 app.use(express.json())
+app.use(express.static('build'))
 
-const requestLogger = (request, response, next) => {
-  console.log('Method:', request.method, request.path, request.body)
-  next()
+// Use tiny for all others than post
+app.use(morgan('tiny', {
+  skip: function (req, res) { return req.method == 'POST' }
+}))
+
+products = {
+  
 }
 
-app.use(requestLogger)
-
-let products = [
-  {
-    id: 1, // Generated id
-    name: "Marimekon paita :)", // Official product name
-    age: "5", // Age in years
-    picture: "<url-to-picture>", // url to picture
-    condition: "good" // Condition good | bad | ugly
-  },
-  {
-    id: 2, // Generated id
-    name: "Marimekon astia :)", // Official product name
-    age: "3", // Age in years
-    picture: "<url-to-picture>", // url to picture
-    condition: "bad"
-  },
-  {
-    id: 3, // Generated id
-    name: "Marimekon jou muu tuote :)", // Official product name
-    age: "5", // Age in years
-    picture: "<url-to-picture>", // url to picture
-    condition: "ugly"
-  }
-]
-
-app.get('/', (req, res) => {
-  res.send('<h1>Hello World!</h1>')
-})
+// Create custom token, include everything else from tiny and
+// add req.body behind
+morgan.token('custom',
+    function (tokens, req, res) {
+        return [
+            tokens.method(req, res),
+            tokens.url(req, res),
+            tokens.status(req, res),
+            tokens.res(req, res, 'content-length'), '-',
+            tokens['response-time'](req, res), 'ms',
+            JSON.stringify(req.body)
+        ].join(' ')
+    })
+// Use custom only for post
+app.use(morgan('custom', {
+    skip: function (req, res) { return req.method != 'POST' }
+}))
 
 app.get('/api/products', (req, res) => {
   res.json(products)
