@@ -2,7 +2,8 @@ import { Switch, Route, Redirect } from "wouter";
 
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import { MyItems } from "./components/MyItems";
+import { AddNew } from "./components/my-items/AddNew";
+import { MyItems } from "./components/my-items/MyItems";
 import { Shop } from "./components/shop/Shop";
 
 import './styles/App.css';
@@ -29,7 +30,7 @@ function App() {
             <h2>My profile</h2>
           </Route>
           <Route path="/add-item">
-            <h2>Add new item here</h2>
+            <AddNew />
           </Route>
         </Switch>
       </div>

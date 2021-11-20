@@ -28,3 +28,28 @@ button.add-item {
 button.add-item:focus-within {
   outline: none;
 }
+
+.add-new-item {
+  width: 100%;
+  padding: 24px;
+}
+
+.add-new-item .inside-navi {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.add-new-item .inside-navi a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 400;
+}
+
+.add-new-item .row {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
