@@ -217,7 +217,7 @@ app.post('/api/wishes', (request, response) => {
 
 app.get('/api/wishes', (request, response) => {
   Wish.find({}).then(wishes => {
-    res.json(wishes)
+    response.json(wishes)
   })
 })
 
