@@ -15,7 +15,7 @@ export const ItemCard = ({ item }: { item: IItem }) => {
             <div className="item-card-info">
                 <div className="item-card-row">
                     <span className="name">{item.product.name}</span>
-                    <span className="price">{item.price || "Undefined"}</span>
+                    <span className="price">{item.price + " €"}</span>
                 </div>
                 <div className="item-card-row">
                     <span className="seller">{item.owner}</span>

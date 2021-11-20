@@ -15,6 +15,13 @@ export async function getFilteredItems(category?: CategoryEnum): Promise<IItem[]
     }
 }
 
-export async function getMyItems() {
-    // todo
+export async function getMyItems(): Promise<IItem[] | undefined> {
+    const userID = "61994d79e1c43510a865c9d6";
+
+    try {
+        const response = await axios.get("/api/items");
+        return response.data.filter((item: IItem) => item.owner === userID);
+    } catch (e) {
+        console.log(e);
+    }
 }

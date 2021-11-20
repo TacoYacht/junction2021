@@ -33,7 +33,7 @@ export const MyItems = () => {
 
     async function getItems() {
         const myItems = await getMyItems();
-        // setItems(myItems);
+        setItems(myItems);
     }
 
     return (

@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 
 import { IItem } from "../../data/model";
-import { getMyItems } from "../../data/queries";
-import { ItemCard } from "../ItemCard";
-
-import { ReactComponent as NoItems } from "../assets/no_own_items.svg";
 
 export const AddNew = () => {
     const [itemData, setItemData] = useState<IItem>();

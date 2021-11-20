@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useRoute } from "wouter";
 
 import { CategoryEnum, IItem } from "../../data/model";
 import { getFilteredItems } from "../../data/queries";
 
-import placeholder from "../../assets/placeholder.jpg";
 import { ItemCard } from "../ItemCard";
 
 export const OpenCollection = (params) => {
