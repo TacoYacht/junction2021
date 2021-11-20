@@ -3,6 +3,11 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 
+
+
+const Product = require('./models/product')
+
+// const PORT = process.env.PORT
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -13,9 +18,6 @@ app.use(morgan('tiny', {
   skip: function (req, res) { return req.method == 'POST' }
 }))
 
-products = {
-  
-}
 
 users = {
   
@@ -40,7 +42,9 @@ app.use(morgan('custom', {
 }))
 
 app.get('/api/products', (req, res) => {
-  res.json(products)
+  Product.find({}).then(products => {
+    res.json(products)
+  })
 })
 
 const generateProductId = () => {
@@ -53,7 +57,28 @@ const generateProductId = () => {
 app.post('/api/products', (request, response) => {
   const body = request.body
 
-  if (!body.name || !body.age || !body.condition) {
+  if (body.content === undefined) {
+    return response.status(400).json({ error: 'content missing' })
+  }
+
+  const product = new Product({
+    name: body.name,
+    age: body.age,
+    picture: body.picture,
+    condition: body.condition,
+    date: new Date(),
+  })
+
+  note.save().then(savedNote => {
+    response.json(savedNote)
+  })
+})
+
+
+app.post('/api/products', (request, response) => {
+  const body = request.body
+
+  if (!body.content) {
     return response.status(400).json({ 
       error: 'content missing' 
     })
@@ -67,20 +92,15 @@ app.post('/api/products', (request, response) => {
     id: generateProductId(),
   }
 
-  products.push(product)
+  products = products.concat(product)
 
   response.json(product)
 })
 
 app.get('/api/products/:id', (request, response) => {
-  const id = Number(request.params.id)
-  const product = products.find(product => product.id === id)
-
-  if (product) {
+  Product.findById(request.params.id).then(product => {
     response.json(product)
-  } else {
-    response.status(404).end()
-  }
+  })
 })
 
 app.delete('/api/products/:id', (request, response) => {
