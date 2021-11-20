@@ -1,13 +1,15 @@
 export interface IItem {
     product: IProduct;
     owner: IUser;
-    status: string;
+    status?: string;
     age: number;
     picture: string[];
     price?: string;
     condition: string;
     created: string;
     size: string;
+    forSale?: boolean;
+    forSwap?: boolean;
 }
 
 export interface ICategory {

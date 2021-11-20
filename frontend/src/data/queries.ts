@@ -18,11 +18,11 @@ export async function getFilteredItems(category?: CategoryEnum): Promise<IItem[]
 }
 
 export async function getMyItems(): Promise<IItem[] | undefined> {
-    const userID = "61994d79e1c43510a865c9d6";
+    const userName = "Porin Marko";
 
     try {
         const response = await axios.get("/api/items");
-        return response.data.filter((item: IItem) => item.owner.id === userID);
+        return response.data.filter((item: IItem) => item.owner.name === userName);
     } catch (e) {
         console.log(e);
     }

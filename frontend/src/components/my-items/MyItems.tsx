@@ -41,7 +41,7 @@ export const MyItems = () => {
             <div className="items">
                 {!!items && items.length > 0 ? items.map((item, i) => {
                     return (
-                        <ItemCard item={item} key={i} />
+                        <ItemCard item={item} owned={true} key={i} />
                     )
                 }) : <NoItemsYet />}
             </div>
