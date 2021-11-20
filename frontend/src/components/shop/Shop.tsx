@@ -4,11 +4,13 @@ import { CategoryEnum } from "../../data/model";
 
 import { Category } from "./Category";
 import { OpenCollection } from "../shop/OpenCollection";
+import { useLocation } from "wouter";
 
 import '../../styles/Shop.css';
 
 export const Shop = () => {
     const [filters, setFilters] = useState(["A filter"]);
+    const [location, setLocation] = useLocation();
 
 
     function addFilter(newFilter: string) {
@@ -17,6 +19,7 @@ export const Shop = () => {
 
     function removeFilter(filterToRemove: string) {
         setFilters(filters.filter(filter => filter !== filterToRemove));
+        setLocation('/shop')
     }
 
     return (
