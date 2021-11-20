@@ -13,7 +13,7 @@ mongoose.connect(url)
   })
 
 const itemSchema = new mongoose.Schema({
-    model: {
+    product: {
       type: Schema.Types.ObjectId,
       ref: 'Product'
     },
@@ -25,7 +25,7 @@ const itemSchema = new mongoose.Schema({
     age: String,
     picture: [],
     condition: String,
-    date: Date,
+    created: Date,
     size: String
 })
 
