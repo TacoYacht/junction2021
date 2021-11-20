@@ -42,7 +42,7 @@ export const ItemCard = ({ item, owned }: { item: IItem; owned?: boolean }) => {
             <div className="item-card-info">
                 <div className="item-card-row">
                     <span className="name">{item.product.name}</span>
-                    <span className="price">{item.price + " €"}</span>
+                    <span className="price">{Number(item.price).toFixed(2) + " €"}</span>
                 </div>
                 <div className="item-card-row">
                     {owned && (
