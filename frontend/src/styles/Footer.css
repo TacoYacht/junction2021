@@ -5,6 +5,7 @@
     left: 0;
     position: fixed;
     width: 100%;
+    border-top: 1px solid #DBE0DE;
 }
 
 .footer-block a {
@@ -22,17 +23,32 @@
 }
 
 .footer-block a {
-    color: inherit;
     text-decoration: none;
     color: #0C261FA6; 
     stroke: #0C261FA6;
 }
 
-.footer-block a.active {
-    color: #0C261FF5;
-    stroke: #0C261FF5;
+.footer-block a path {
+    stroke: #0C261FA6;
+    margin-bottom: 5px;
 }
 
-.footer-block a svg {
-    margin-bottom: 5px;
+.footer-block a.active {
+    color: #0C261FF5;
+    font-weight: 500;
+}
+
+.footer-block a.active path {
+    stroke: #0C261FF5;
+    stroke-opacity: 0.96;
+}
+
+.footer-block a.active svg.marimekko-icon path {
+    stroke: none;
+    fill: #0C261FF5;
+}
+
+.footer-block a svg.marimekko-icon path {
+    stroke: none;
+    fill: #0C261FA6;
 }

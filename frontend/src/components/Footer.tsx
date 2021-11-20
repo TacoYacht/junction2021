@@ -35,7 +35,7 @@ export const Footer = () => {
         </div>
         <div className="footer-block">
             <ActiveLink href="/my-products">
-                <M title="My products" />
+                <M title="My products" className="marimekko-icon" />
                 My products
             </ActiveLink>
         </div>

@@ -1,0 +1,31 @@
+.search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    height: 1rem;
+}
+
+.camera-icon {
+    position: absolute;
+    right: 10px;
+    height: 1rem;
+}
+
+.search input {
+    width: 100%;
+    padding: 4px 40px 4px 40px;
+    background: #EFF2F1;
+    border-style: none;
+    border-radius: 8px;
+    height: 2rem;
+    font-size: 14px;
+}
+
+.search input:focus-visible {
+    outline: none;
+}

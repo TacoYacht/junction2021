@@ -3,15 +3,8 @@
   text-align: center;
 }
 
-.App-logo {
-  pointer-events: none;
-  width: 90%;
-}
-
-.App-header {
-  margin: 20px;
-  position: sticky;
+.app-content {
+  position: relative;
+  display: flex;
   justify-content: center;
-  top: 0;
-  left: 0;
 }
