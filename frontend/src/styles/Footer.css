@@ -6,6 +6,8 @@
     position: fixed;
     width: 100%;
     border-top: 1px solid #DBE0DE;
+    z-index: 1;
+    background-color: white;
 }
 
 .footer-block a {
