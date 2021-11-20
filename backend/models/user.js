@@ -3,10 +3,6 @@ const Schema = mongoose.Schema
 
 const userSchema = new mongoose.Schema({
     name: String,
-    wishlist: [{
-        type: Schema.Types.ObjectId,
-        ref: 'ProductModel'
-    }],
     size: String,
 })
 
