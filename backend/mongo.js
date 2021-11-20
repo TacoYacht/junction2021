@@ -146,6 +146,30 @@ else if (process.argv[2].toLowerCase() === 'load_categories') {
         }
     })
 }
+else if (process.argv[2].toLowerCase() === 'load_users') {
+    // Read product models from json
+    fs.readFile('./example_data/users.json', 'utf8', async (err, jsonString) => {
+        if (err) {
+            console.log("File read failed:", err)
+            return
+        }
+        console.log('File data:', jsonString)
+        try {
+            const json = JSON.parse(jsonString)
+            for (p of json) {
+                const user = new User({
+                    name:p.name,
+                    wishlist: [],
+                    size: p.size
+                })
+                await user.save()
+            }
+            mongoose.connection.close()
+        } catch (err) {
+            console.log('Error parsing JSON string:', err)
+        }
+    })
+}
 else if (process.argv[2].toLowerCase() === 'load_items') {
     // Read product models from json
     fs.readFile('./example_data/items.json', 'utf8', async (err, jsonString) => {
@@ -157,15 +181,10 @@ else if (process.argv[2].toLowerCase() === 'load_items') {
         try {
             const json = JSON.parse(jsonString)
             for (p of json) {
-                console.log(`${p.name}`)
-                // Add json entry to database
-                if (True) { // TBD: Add checks here
-                    return response.status(400).json({ error: 'required content missing' })
-                }
-                const user = new User({
+                const item = new Item({
                     // TBD: add fields here
                 })
-                await user.save()
+                await item.save()
             }
             mongoose.connection.close()
         } catch (err) {
