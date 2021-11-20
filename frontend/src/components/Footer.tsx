@@ -36,7 +36,7 @@ export const Footer = () => {
             </ActiveLink>
         </div>
         <div className="footer-block">
-            <ActiveLink href="/my-items">
+            <ActiveLink href="/my-items" href2="/add-item">
                 <M title="My items" className="marimekko-icon" />
                 My items
             </ActiveLink>
