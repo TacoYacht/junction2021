@@ -1,20 +1,35 @@
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
 import logo from './assets/logo.svg';
+import { Switch, Route } from "wouter";
+
 import './styles/App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+      <Header />
       <div className="app-content">
-        <div className="row">
-          <h2>Re-love</h2>
-          <h2>Swap</h2>
-          <h2>Upcycle</h2>
-          <h2>My Marimekko Products</h2>
-        </div>
+        <img src={logo} className="App-logo" alt="logo" />
+        <Switch>
+          <Route path="/">
+            <h2>Re-love</h2>
+          </Route>
+          <Route path="/explore">
+            <h2>Explore</h2>
+          </Route>
+          <Route path="/my-products">
+            <h2>My products</h2>
+          </Route>
+          <Route path="/discussion">
+            <h2>Discuss</h2>
+          </Route>
+          <Route path="/profile">
+            <h2>My profile</h2>
+          </Route>
+        </Switch>
       </div>
+      <Footer />
     </div>
   );
 }
