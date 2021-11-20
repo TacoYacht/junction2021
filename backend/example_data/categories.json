@@ -1,52 +1,106 @@
-{
-    "category": [
-        {
-            "name": "Clothing",
-            "subcategory": [
-                { "name": "Dresses"},
-                { "name": "Tops & Tunics"},
-                { "name": "Coats & Jackets"},
-                { "name": "Skirts"},
-                { "name": "Shirts " },
-                { "name": "Trousers"},
-                { "name": "Knits"},
-                { "name": "Nightwear & Loungewear"},
-                { "name": "Kid's clothing"},
-                { "name": "Unisex"},
-                { "name": "Collaboration collections"},
-                { "name": "Community created"}
-            ]
-        },
-        {
-            "name": "Bags",
-            "subcategory": [
-                { "name": "Leather bags"},
-                { "name": "Canvas bags"},
-                { "name": "Handbags"},
-                { "name": "Shoulder bags"},
-                { "name": "Backpacks"},
-                { "name": "Purses & Wallets"}
-            ]
-        },
-        {
-            "name": "Accessories",
-            "subcategory": [
-                { "name": "Shoes"},
-                { "name": "Hats"},
-                { "name": "Scarves"},
-                { "name": "Socks"},
-                { "name": "Umbrellas"}
-            ]
-        },
-        {
-            "name": "Home",
-            "subcategory": [
-                {"name": "Kitchen & dininig"},
-                {"name": "Home decor"},
-                {"name": "Bedding"},
-                {"name": "Bath & towels"},
-                {"name": "Printed fabrics"}
-            ]
-        }
-    ]
-}
+[
+    {
+        "name": "Clothing",
+        "subcategory": [
+            {
+                "name": "Dresses"
+            },
+            {
+                "name": "Tops & Tunics"
+            },
+            {
+                "name": "Coats & Jackets"
+            },
+            {
+                "name": "Skirts"
+            },
+            {
+                "name": "Shirts "
+            },
+            {
+                "name": "Trousers"
+            },
+            {
+                "name": "Knits"
+            },
+            {
+                "name": "Nightwear & Loungewear"
+            },
+            {
+                "name": "Kid's clothing"
+            },
+            {
+                "name": "Unisex"
+            },
+            {
+                "name": "Collaboration collections"
+            },
+            {
+                "name": "Community created"
+            }
+        ]
+    },
+    {
+        "name": "Bags",
+        "subcategory": [
+            {
+                "name": "Leather bags"
+            },
+            {
+                "name": "Canvas bags"
+            },
+            {
+                "name": "Handbags"
+            },
+            {
+                "name": "Shoulder bags"
+            },
+            {
+                "name": "Backpacks"
+            },
+            {
+                "name": "Purses & Wallets"
+            }
+        ]
+    },
+    {
+        "name": "Accessories",
+        "subcategory": [
+            {
+                "name": "Shoes"
+            },
+            {
+                "name": "Hats"
+            },
+            {
+                "name": "Scarves"
+            },
+            {
+                "name": "Socks"
+            },
+            {
+                "name": "Umbrellas"
+            }
+        ]
+    },
+    {
+        "name": "Home",
+        "subcategory": [
+            {
+                "name": "Kitchen & dininig"
+            },
+            {
+                "name": "Home decor"
+            },
+            {
+                "name": "Bedding"
+            },
+            {
+                "name": "Bath & towels"
+            },
+            {
+                "name": "Printed fabrics"
+            }
+        ]
+    }
+]

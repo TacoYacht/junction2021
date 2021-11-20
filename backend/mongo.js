@@ -12,6 +12,7 @@ const Item = require('./models/item')
 const User = require('./models/user')
 const Category = require('./models/category')
 const Pattern = require('./models/pattern')
+const Wish = require('./models/wish')
 
 const url = process.env.MONGODB_URI
 
@@ -45,8 +46,8 @@ else if (process.argv[2].toLowerCase() === 'get_productmodels') {
 else if (process.argv[2].toLowerCase() === 'get_users') {
     console.log(`users:`)
     User.find({}).then(user => {
-        user.forEach(product => {
-            console.log(`Name:${user.name}`)
+        user.forEach(u => {
+            console.log(`Name:${u.name}`)
         })
         mongoose.connection.close()
     })
@@ -87,7 +88,7 @@ else if (process.argv[2].toLowerCase() === 'load_patterns') {
 }
 else if (process.argv[2].toLowerCase() === 'load_products') {
     // Read product models from json
-    fs.readFile('./example_data/products2.json', 'utf8', async (err, jsonString) => {
+    fs.readFile('./example_data/products.json', 'utf8', async (err, jsonString) => {
         if (err) {
             console.log("File read failed:", err)
             return
@@ -120,12 +121,6 @@ else if (process.argv[2].toLowerCase() === 'load_categories') {
         try {
             const json = JSON.parse(jsonString)
             for (p of json) {
-                console.log(`Adding ${p.name} to db`)
-                // Add json entry to database
-                // if (True === True) { // TBD: Add checks here
-                //     return response.status(400).json({ error: 'required content missing' })
-                //   }
-                // parent category
                 const parentCategory = new Category({
                     name: p.name
                 })
@@ -158,7 +153,7 @@ else if (process.argv[2].toLowerCase() === 'load_users') {
             const json = JSON.parse(jsonString)
             for (p of json) {
                 const user = new User({
-                    name:p.name,
+                    name: p.name,
                     wishlist: [],
                     size: p.size
                 })
@@ -171,26 +166,72 @@ else if (process.argv[2].toLowerCase() === 'load_users') {
     })
 }
 else if (process.argv[2].toLowerCase() === 'load_items') {
-    // Read product models from json
-    fs.readFile('./example_data/items.json', 'utf8', async (err, jsonString) => {
+    // Get random user
+    const conditions = ['good', 'decent', 'bad']
+    const status_options = ['public', 'private', 'for sale']
+    const size_options = ['XL', 'L', 'M', 'S']
+
+    function randomDate(start, end) {
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    }
+
+    fs.readFile('./example_data/products.json', 'utf8', async (err, jsonString) => {
         if (err) {
             console.log("File read failed:", err)
             return
         }
-        console.log('File data:', jsonString)
+        const users = await User.find({})
         try {
             const json = JSON.parse(jsonString)
-            for (p of json) {
+            console.log(json)
+            // Take 100 times random sample from json
+            for (let x = 0; x < 20; x++) {
+                const randItem = json[Math.floor(Math.random() * json.length)]
+
                 const item = new Item({
-                    // TBD: add fields here
+                    owner: users[Math.floor(Math.random() * users.length)],
+                    conditions: conditions[Math.floor(Math.random() * conditions.length)],
+                    status: status_options[Math.floor(Math.random() * status_options.length)],
+                    age: Math.floor(Math.random() * (20 + 1)),
+                    price: Number(Math.floor(Math.random() * (300 + 1))),
+                    size: size_options[Math.floor(Math.random() * size_options.length)],
+                    date: randomDate(new Date(2012, 0, 1), new Date()),
+                    picture: randItem.image,
+                    product: await Product.findOne({ name: randItem.name })
                 })
                 await item.save()
             }
+
             mongoose.connection.close()
+
         } catch (err) {
             console.log('Error parsing JSON string:', err)
         }
     })
+}
+else if (process.argv[2].toLowerCase() === 'generate_wishlists') {
+    (async () => {
+        const users = await User.find({})
+        const products = await Product.find({})
+        const numberOfWishes = 20
+        for (let i = 0; i < numberOfWishes; i++) {
+            const randUser = users[Math.floor(Math.random() * users.length)]
+            const randProduct = products[Math.floor(Math.random() * products.length)]
+            const existingWish = await Wish.findOne({product: randProduct, user: randUser})
+            if (existingWish != undefined) {
+                console.log(`${randUser.name} already has ${randProduct.name} in wishlist`)
+            }
+            else {
+                console.log(`Adding product ${randProduct.name} for ${randUser.name}`)
+                const newWish = new Wish({
+                    user: randUser,
+                    product: randProduct
+                })
+                await newWish.save()
+            }
+        }
+        mongoose.connection.close()
+    })()
 }
 else {
     // Other arv length not supported.

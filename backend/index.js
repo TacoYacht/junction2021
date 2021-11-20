@@ -57,7 +57,7 @@ app.get('/api/items', async (request, response) => {
     populate: {
       path: 'pattern'
     }
-  })
+  }).populate('owner')
   return response.json(items)
 })
 
@@ -133,8 +133,22 @@ app.delete('/api/users/:id', (request, response) => {
   })
 })
 
-app.get('/api/users/:id/items', (request, response) => {
-  Item.find({ owner: request.params.id }).then(items => response.json(items))
+app.get('/api/users/:id/items', async (request, response) => {
+  const items = await Item.find({ owner: request.params.id }).populate({
+    path: 'product',
+    populate: {
+      path: 'category',
+      populate: {
+        path: 'parent'
+      }
+    }
+  }).populate({
+    path: 'product',
+    populate: {
+      path: 'pattern'
+    }
+  }).populate('owner')
+  response.json(items)
 })
 
 
