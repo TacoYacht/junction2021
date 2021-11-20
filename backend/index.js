@@ -74,10 +74,9 @@ app.get('/api/products/:id', (request, response) => {
 })
 
 app.delete('/api/products/:id', (request, response) => {
-  const id = Number(request.params.id)
-  products = products.filter(product => product.id !== id)
-
-  response.status(204).end()
+  Product.findByIdAndDelete(request.params.id).then(product => {
+    response.json(product)
+  })
 })
 
 app.get('/api/users', (req, res) => {
@@ -105,21 +104,19 @@ app.post('/api/users', (request, response) => {
 })
 
 app.get('/api/users/:id', (request, response) => {
-  const id = Number(request.params.id)
-  const user = users.find(user => user.id === id)
-
-  if (user) {
+  User.findById(request.params.id).then(user => {
     response.json(user)
-  } else {
-    response.status(404).end()
-  }
+  })
 })
 
 app.delete('/api/users/:id', (request, response) => {
-  const id = Number(request.params.id)
-  users = users.filter(user => user.id !== id)
+  User.findByIdAndDelete(request.params.id).then(user => {
+    response.json(user)
+  })
+})
 
-  response.status(204).end()
+app.get('/api/users/:id/products', (request, response) => {
+  Product.find({ owner: request.params.id }).then(products => response.json(products))
 })
 
 
