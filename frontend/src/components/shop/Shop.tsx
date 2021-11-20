@@ -28,6 +28,13 @@ export const Shop = () => {
                 {filters.map((filter, i) => <div className="filter" key={i} onClick={() => removeFilter(filter)}>{filter}</div>)}
             </div>
             <Switch>
+                <Route path="/">
+                    <div className="categories">
+                        <Category type={CategoryEnum.CLOTHING} addFilter={addFilter} />
+                        <Category type={CategoryEnum.KNITS} addFilter={addFilter} />
+                        <Category type={CategoryEnum.HOME} addFilter={addFilter} />
+                    </div>
+                </Route>
                 <Route path="/shop">
                     <div className="categories">
                         <Category type={CategoryEnum.CLOTHING} addFilter={addFilter} />
