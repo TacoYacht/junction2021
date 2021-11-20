@@ -27,3 +27,38 @@ export async function getMyItems(): Promise<IItem[] | undefined> {
         console.log(e);
     }
 }
+
+export async function createItem(productId, userId, age: number, condition, size, picture?: string[], forSale?: boolean, forSwap?: boolean, price?: number): Promise<IItem[] | undefined> {
+    try {
+        const response = await axios.post("/api/items",
+        {
+            product: productId,
+            owner: userId,
+            age: age,
+            condition: condition,
+            size: size,
+            picture,
+            forSale,
+            forSwap,
+            price
+        });
+        console.log(response)
+
+        return response.data;
+
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export async function getAllProducts(): Promise<IItem[] | undefined> {
+    try {
+        const response = await axios.get("/api/products");
+        console.log(response)
+
+        return response.data;
+
+    } catch (e) {
+        console.log(e);
+    }
+}
