@@ -11,6 +11,7 @@ const User = require('./models/user')
 const Product = require('./models/product')
 const Category = require('./models/category')
 const Pattern = require('./models/pattern')
+const Wish = require('./models/wish')
 
 // const PORT = process.env.PORT
 const app = express()
@@ -93,14 +94,14 @@ app.get('/api/users', (req, res) => {
 app.post('/api/users', (request, response) => {
   const body = request.body
 
-  if ( body.name === undefined  || body.size === undefined) {
-    return response.status(400).json({ error: 'name or size missing' })
+  if ( body.name === undefined  || body.size === undefined || body.zipCode) {
+    return response.status(400).json({ error: 'name, size or zipCode missing' })
   }
 
   const user = new User({
     name: body.name,
     size: body.size,
-    wishlist: []
+    zipCode: body.zipCode
   })
 
   user.save().then(savedUser => {
@@ -194,6 +195,41 @@ app.get('/api/categories', (req, res) => {
 app.get('/api/patterns', (req, res) => {
   Pattern.find({}).then(patterns => {
     res.json(patterns)
+  })
+})
+
+app.post('/api/wishes', (request, response) => {
+  const body = request.body
+
+  if ( body.product === undefined || body.user === undefined) {
+    return response.status(400).json({ error: 'product and user are needed' })
+  }
+
+  const wish = new Wish({
+    user: body.user,
+    product: body.product
+  })
+
+  wish.save().then(savedWish => {
+    response.json(savedWish)
+  })
+})
+
+app.get('/api/wishes', (request, response) => {
+  Wish.find({}).then(wishes => {
+    response.json(wishes)
+  })
+})
+
+app.delete('/api/wishes/:id', (request, response) => {
+  Wish.findByIdAndDelete(request.params.id).then(wish => {
+    response.json(wish)
+  })
+})
+
+app.get('/api/users/:id/wishes', (request, response) => {
+  Wish.find({user: request.params.id}).then(wishes => {
+    response.json(wishes)
   })
 })
 

@@ -1,22 +1,22 @@
 [
     {
         "name": "Porin Marko",
-        "wishlist": [],
-        "size": "XL"
+        "size": "XL",
+        "zipCode": "02250"
     },
     {
         "name": "Levin Joni",
-        "wishlist": [],
-        "size": "L"
+        "size": "L",
+        "zipCode": "03520"
     },
     {
         "name": "Turun Jonna",
-        "wishlist": [],
-        "size": "M"
+        "size": "M",
+        "zipCode": "00100"
     },
     {
         "name": "Keravan Tiina",
-        "wishlist": [],
-        "size": "S"
+        "size": "S",
+        "zipCode": "45370"
     }
 ]
