@@ -8,6 +8,7 @@ const path = require('path')
 
 const Item = require('./models/item')
 const User = require('./models/user')
+const Product = require('./models/product')
 
 // const PORT = process.env.PORT
 const app = express()
@@ -118,6 +119,13 @@ app.delete('/api/users/:id', (request, response) => {
 
 app.get('/api/users/:id/items', (request, response) => {
   Item.find({ owner: request.params.id }).then(items => response.json(items))
+})
+
+
+app.get('/api/products', (req, res) => {
+  Product.find({}).then(products => {
+    res.json(products)
+  })
 })
 
 

@@ -26,7 +26,8 @@ const itemSchema = new mongoose.Schema({
     picture: [],
     condition: String,
     created: Date,
-    size: String
+    size: String,
+    price: Number
 })
 
 itemSchema.set('toJSON', {
