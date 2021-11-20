@@ -1,42 +1,55 @@
 import * as React from "react";
-import { Link } from "wouter";
+import { Link, useRoute } from "wouter";
 
-import M from '../assets/m_logo.svg';
-import placeholder from '../assets/placeholder.png';
+import { ReactComponent as M } from '../assets/m_logo.svg';
+import { ReactComponent as ShopIcon } from '../assets/shop.svg';
+import { ReactComponent as UserIcon } from '../assets/user.svg';
+import { ReactComponent as MessageIcon } from '../assets/message.svg';
+import { ReactComponent as SearchIcon } from '../assets/search.svg';
 import '../styles/Footer.css';
+
+const ActiveLink = (props: any) => {
+    const [isActive] = useRoute(props.href);
+
+    return (
+        <Link {...props}>
+            <a className={isActive ? "active" : ""}>{props.children}</a>
+        </Link>
+    );
+};
 
 export const Footer = () => {
   return (
     <div className="footer">
         <div className="footer-block">
-            <Link href="/">
-                <img src={placeholder} alt="Shop" />
+            <ActiveLink href="/">
+                <ShopIcon title="Shop" />
                 Shop
-            </Link>
+            </ActiveLink>
         </div>
-        <div className="footer-block">
-            <Link href="/explore">
-                <img src={placeholder} alt="Explore" />
+        <div className="footer-block">  
+            <ActiveLink href="/explore">
+                <SearchIcon title="Explore" />
                 Explore
-            </Link>
+            </ActiveLink>
         </div>
         <div className="footer-block">
-            <Link href="/my-products">
-                <img src={M} alt="My products" />
+            <ActiveLink href="/my-products">
+                <M title="My products" />
                 My products
-            </Link>
+            </ActiveLink>
         </div>
         <div className="footer-block">
-            <Link href="/discussion">
-                <img src={placeholder} alt="Discussion" />
+            <ActiveLink href="/discussion">
+                <MessageIcon title="Discussion"  />
                 Discussion
-            </Link>
+            </ActiveLink>
         </div>
         <div className="footer-block">
-            <Link href="/profile">
-                <img src={placeholder} alt="Profile" />
+            <ActiveLink href="/profile">
+                <UserIcon title="Profile" />
                 Profile
-            </Link>
+            </ActiveLink>
         </div>
     </div>
   );

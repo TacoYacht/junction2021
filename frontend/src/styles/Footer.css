@@ -20,3 +20,19 @@
     height: 50%;
     max-width: 40px;
 }
+
+.footer-block a {
+    color: inherit;
+    text-decoration: none;
+    color: #0C261FA6; 
+    stroke: #0C261FA6;
+}
+
+.footer-block a.active {
+    color: #0C261FF5;
+    stroke: #0C261FF5;
+}
+
+.footer-block a svg {
+    margin-bottom: 5px;
+}

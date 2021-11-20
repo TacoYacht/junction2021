@@ -1,7 +1,7 @@
+import { Switch, Route } from "wouter";
+
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-import logo from './assets/logo.svg';
-import { Switch, Route } from "wouter";
 
 import './styles/App.css';
 
@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <Header />
       <div className="app-content">
-        <img src={logo} className="App-logo" alt="logo" />
         <Switch>
           <Route path="/">
             <h2>Re-love</h2>
