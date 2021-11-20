@@ -57,44 +57,24 @@ const generateProductId = () => {
 app.post('/api/products', (request, response) => {
   const body = request.body
 
-  if (body.content === undefined) {
-    return response.status(400).json({ error: 'content missing' })
+  if ( body.model === undefined || body.owner === undefined || body.age === undefined || body.condition === undefined || body.size === undefined) {
+    return response.status(400).json({ error: 'required content missing (either model, owner, age, condition or size)' })
   }
 
   const product = new Product({
-    name: body.name,
+    model: body.model,
+    owner: body.owner,
     age: body.age,
-    picture: body.picture,
+    picture: body.picture || [],
     condition: body.condition,
+    size: body.size,
+    status: body.status || 'Not on sale',
     date: new Date(),
   })
 
-  note.save().then(savedNote => {
-    response.json(savedNote)
+  product.save().then(savedProduct => {
+    response.json(savedProduct)
   })
-})
-
-
-app.post('/api/products', (request, response) => {
-  const body = request.body
-
-  if (!body.content) {
-    return response.status(400).json({ 
-      error: 'content missing' 
-    })
-  }
-
-  const product = {
-    name: body.name,
-    age: body.age,
-    picture: body.picture,
-    condition: body.condition,
-    id: generateProductId(),
-  }
-
-  products = products.concat(product)
-
-  response.json(product)
 })
 
 app.get('/api/products/:id', (request, response) => {
