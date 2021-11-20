@@ -8,28 +8,29 @@ import { ReactComponent as ShoppingCartIcon } from '../assets/shopping_cart.svg'
 import { Search } from "./Search";
 
 export const Header = () => {
-    const [location, setLocation] = useLocation();
+    const [location] = useLocation();
+    const activePage = location === "/" ? "shop" : location.split("/")[1];
 
     const pages: Record<string, string> = {
-        "/": "Shop",
-        "/explore": "Explore",
-        "/my-products": "My products",
-        "/discussion": "Discussion",
-        "/profile": "Profile",
+        "shop": "Shop",
+        "explore": "Explore",
+        "my-products": "My products",
+        "discussion": "Discussion",
+        "profile": "Profile",
     }
 
     function getActivePage(): string {
-        return pages[location];
+        return pages[activePage];
     }
 
-  return (
-    <header className="App-header">
-        <div className="top-bar">
-            <h2 className="page-name">{getActivePage()}</h2>
-            <SavedIcon />
-            <ShoppingCartIcon />
-        </div>
-        <Search />
-    </header>
-  );
+    return (
+        <header className="header">
+            <div className="top-bar">
+                <h2 className="page-name">{getActivePage()}</h2>
+                <SavedIcon />
+                <ShoppingCartIcon />
+            </div>
+            <Search />
+        </header>
+    );
 }

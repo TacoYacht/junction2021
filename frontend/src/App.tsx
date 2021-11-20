@@ -2,6 +2,9 @@ import { Switch, Route } from "wouter";
 
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
+import { OpenCollection } from "./components/shop/OpenCollection";
+import { Shop } from "./components/shop/Shop";
+import { CategoryEnum } from "./data/model";
 
 import './styles/App.css';
 
@@ -12,7 +15,7 @@ function App() {
       <div className="app-content">
         <Switch>
           <Route path="/">
-            <h2>Re-love</h2>
+            <Shop />
           </Route>
           <Route path="/explore">
             <h2>Explore</h2>
@@ -26,6 +29,7 @@ function App() {
           <Route path="/profile">
             <h2>My profile</h2>
           </Route>
+          <Route path="/shop/:category" component={OpenCollection} />
         </Switch>
       </div>
       <Footer />
