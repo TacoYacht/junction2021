@@ -44,7 +44,7 @@ export const ItemCard = ({ item, owned }: { item: IItem; owned?: boolean }) => {
                 <div className="item-card-row">
                     <span className="name">{item.product.name}</span>
                     <span className="price">{getPrice(item.price)}</span>
-                    <span className="original-price">{`(${getPrice(item.product.originalPrice)})`}</span>
+                    {!owned && <span className="original-price">{`(${getPrice(item.product.originalPrice)})`}</span>}
                 </div>
                 <div className="item-card-row">
                     {owned && (
