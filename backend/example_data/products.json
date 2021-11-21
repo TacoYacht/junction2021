@@ -178,6 +178,80 @@
             "gray, black"
         ],
         "image": "https://www.marimekko.com/media/catalog/product/0/7/070066-990_X139019_10_1598370020.jpg"
+    },
+    {
+        "name": "Lehtoniitty Kottarainen",
+        "category": "Dresses",
+        "originalPrice": "430",
+        "availableColors": [
+            "black"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090354-983_X191675_10_1632828446.jpg"
+    },
+    {
+        "name": "Kyllikki Unikko",
+        "category": "Skirts",
+        "originalPrice": "230",
+        "availableColors": [
+            "black",
+            "white"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090498-018_X200511_10_1636363971.jpg"
+    },
+    {
+        "name": "Ohikulkevat Kivet",
+        "category": "Tops & Tunics",
+        "originalPrice": "265",
+        "availableColors": [
+            "blue"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090400-059_X191868_10_1631714482.jpg"
+    },
+    {
+        "name": "Matkani Kivet",
+        "category": "Coats & Jackets",
+        "originalPrice": "550",
+        "availableColors": [
+            "blue"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090143-099_X191650_60_1631716448.jpg"
+    },
+    {
+        "name": "Lyhyt hiha",
+        "category": "Shirts",
+        "originalPrice": "75",
+        "availableColors": [
+            "black",
+            "red",
+            "blue"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/4/044734-068_X185448_10_1631855378.jpg"
+    },
+    {
+        "name": "Peruskassi Ruutu-Unikko",
+        "category": "Handbags",
+        "originalPrice": "120",
+        "availableColors": [
+            "blue"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090316-555_X191634_10_1629517543.jpg"
+    },
+    {
+        "name": "Enni Juhla Unikko",
+        "category": "Backpacks",
+        "originalPrice": "190",
+        "availableColors": [
+            "grey"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090565-920_X202691_40_1636363981_1.jpg"
+    },
+    {
+        "name": "Toiveikas Maisema Unikko",
+        "category": "Shirts",
+        "originalPrice": "205",
+        "availableColors": [
+            "grey"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090293-159_X191878_10_1631688229.jpg"
     }
-
 ]
