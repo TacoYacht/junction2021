@@ -22,7 +22,7 @@ export async function getMyItems(): Promise<IItem[] | undefined> {
 
     try {
         const response = await axios.get("/api/items");
-        return response.data.filter((item: IItem) => item.owner.name === userName);
+        return response.data.filter((item: IItem) => item.owner !== null && item.owner.name === userName);
     } catch (e) {
         console.log(e);
     }
