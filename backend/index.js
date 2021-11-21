@@ -75,7 +75,8 @@ app.post('/api/items', (request, response) => {
     picture: body.picture || [],
     condition: body.condition,
     size: body.size,
-    status: body.status || 'Not on sale',
+    forSale: !!body.forSale,
+    forSwap: !!body.forSwap,
     created: new Date(),
     price: body.price || null
   })
