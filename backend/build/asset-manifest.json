@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.993feb4b.chunk.css",
+    "main.css": "/static/css/main.d9abbb6b.chunk.css",
     "main.js": "/static/js/main.fabe8be6.chunk.js",
     "main.js.map": "/static/js/main.fabe8be6.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ff5b8ea4.js",
@@ -10,7 +10,7 @@
     "static/js/2.1358be30.chunk.js.map": "/static/js/2.1358be30.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.fe708519.chunk.css.map": "/static/css/2.fe708519.chunk.css.map",
-    "static/css/main.993feb4b.chunk.css.map": "/static/css/main.993feb4b.chunk.css.map",
+    "static/css/main.d9abbb6b.chunk.css.map": "/static/css/main.d9abbb6b.chunk.css.map",
     "static/js/2.1358be30.chunk.js.LICENSE.txt": "/static/js/2.1358be30.chunk.js.LICENSE.txt",
     "static/media/Ellipse 191.69aa1017.svg": "/static/media/Ellipse 191.69aa1017.svg",
     "static/media/Ellipse 3.92bf1fcd.svg": "/static/media/Ellipse 3.92bf1fcd.svg",
@@ -38,7 +38,7 @@
     "static/js/runtime-main.ff5b8ea4.js",
     "static/css/2.fe708519.chunk.css",
     "static/js/2.1358be30.chunk.js",
-    "static/css/main.993feb4b.chunk.css",
+    "static/css/main.d9abbb6b.chunk.css",
     "static/js/main.fabe8be6.chunk.js"
   ]
 }
