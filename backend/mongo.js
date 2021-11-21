@@ -167,7 +167,7 @@ else if (process.argv[2].toLowerCase() === 'load_items') {
         try {
             const json = JSON.parse(jsonString)
             // Take 20 times random sample from json
-            for (let x = 0; x < 20; x++) {
+            for (let x = 0; x < 30; x++) {
                 const randItem = json[Math.floor(Math.random() * json.length)]
                 const category = await Category.findOne({name: randItem.category})
                 const categoryParent = await Category.findById(category.parent)

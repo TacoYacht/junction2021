@@ -18,5 +18,15 @@
         "name": "Keravan Tiina",
         "size": "S",
         "zipCode": "45370"
+    },
+    {
+        "name": "Lappeenrannan Laura",
+        "size": "M",
+        "zipCode": "53100"
+    },
+    {
+        "name": "Mikkelin Mervi",
+        "size": "L",
+        "zipCode": "65100"
     }
 ]
