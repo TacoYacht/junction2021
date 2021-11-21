@@ -16,9 +16,10 @@ export interface INewItemData {
     productId: string;
     status?: string;
     picture?: string[];
-    price?: string;
+    price?: number;
     condition: string;
     created: string;
+    age?: number;
     size: string;
     forSale?: boolean;
     forSwap?: boolean;
@@ -34,6 +35,7 @@ export interface IProduct {
     category: ICategory;
     print: string;
     name: string;
+    id: string;
 }
 
 export interface IUser {
@@ -42,6 +44,7 @@ export interface IUser {
     zipCode: string;
     id: string;
 }
+  
 
 export enum CategoryEnum {
     CLOTHING = "Clothing",

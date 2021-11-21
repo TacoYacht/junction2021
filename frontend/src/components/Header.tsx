@@ -1,11 +1,11 @@
 import * as React from "react";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 
 import '../styles/Header.css';
 
 import { ReactComponent as SavedIcon } from '../assets/saved.svg';
 import { ReactComponent as ShoppingCartIcon } from '../assets/shopping_cart.svg';
-import { Search } from "./Search";
+import { ReactComponent as PlusIcon } from '../assets/plus.svg';
 
 export const Header = () => {
     const [location] = useLocation();
@@ -26,8 +26,17 @@ export const Header = () => {
         <header className="header">
             <div className="top-bar">
                 <h2 className="page-name">{getActivePage()}</h2>
-                <SavedIcon />
-                <ShoppingCartIcon />
+                {activePage !== "my-items" && (
+                    <React.Fragment>
+                        <SavedIcon />
+                        <ShoppingCartIcon />
+                    </React.Fragment>
+                )}
+                {activePage === "my-items" && (
+                    <Link to="/add-item">
+                        <PlusIcon className="add-item" />
+                    </Link>
+                )}
             </div>
         </header>
     );

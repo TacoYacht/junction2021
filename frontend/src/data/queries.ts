@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CategoryEnum, IItem, ICategory } from "./model";
+import { CategoryEnum, IItem, ICategory, IProduct } from "./model";
 
 export async function getFilteredItems(category?: CategoryEnum): Promise<IItem[] | undefined> {
     try {
@@ -28,16 +28,18 @@ export async function getMyItems(): Promise<IItem[] | undefined> {
     }
 }
 
-export async function createItem(productId, userId, age: number, condition, size, picture?: string[], forSale?: boolean, forSwap?: boolean, price?: number): Promise<IItem[] | undefined> {
+export async function createItem(productId, age: number, condition, size, forSale?: boolean, forSwap?: boolean, price?: number): Promise<IItem[] | undefined> {
+    const userName = "Porin Marko";
+    
     try {
         const response = await axios.post("/api/items",
         {
             product: productId,
-            owner: userId,
+            owner: userName,
             age: age,
             condition: condition,
             size: size,
-            picture,
+            picture: null,
             forSale,
             forSwap,
             price
@@ -51,11 +53,9 @@ export async function createItem(productId, userId, age: number, condition, size
     }
 }
 
-export async function getAllProducts(): Promise<IItem[] | undefined> {
+export async function getAllProducts(): Promise<IProduct[] | undefined> {
     try {
         const response = await axios.get("/api/products");
-        console.log(response)
-
         return response.data;
 
     } catch (e) {
