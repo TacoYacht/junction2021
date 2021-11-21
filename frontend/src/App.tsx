@@ -5,7 +5,6 @@ import { Header } from './components/Header';
 import { AddNew } from "./components/my-items/AddNew";
 import { MyItems } from "./components/my-items/MyItems";
 import { Shop } from "./components/shop/Shop";
-
 import './styles/App.css';
 
 function App() {

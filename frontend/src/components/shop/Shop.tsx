@@ -9,7 +9,7 @@ import { useLocation } from "wouter";
 import '../../styles/Shop.css';
 
 export const Shop = () => {
-    const [filters, setFilters] = useState(["A filter"]);
+    const [filters, setFilters] = useState([]);
     const [location, setLocation] = useLocation();
 
 
@@ -31,14 +31,14 @@ export const Shop = () => {
                 <Route path="/">
                     <div className="categories">
                         <Category type={CategoryEnum.CLOTHING} addFilter={addFilter} />
-                        <Category type={CategoryEnum.KNITS} addFilter={addFilter} />
+                        <Category type={CategoryEnum.BAGS} addFilter={addFilter} />
                         <Category type={CategoryEnum.HOME} addFilter={addFilter} />
                     </div>
                 </Route>
                 <Route path="/shop">
                     <div className="categories">
                         <Category type={CategoryEnum.CLOTHING} addFilter={addFilter} />
-                        <Category type={CategoryEnum.KNITS} addFilter={addFilter} />
+                        <Category type={CategoryEnum.BAGS} addFilter={addFilter} />
                         <Category type={CategoryEnum.HOME} addFilter={addFilter} />
                     </div>
                 </Route>

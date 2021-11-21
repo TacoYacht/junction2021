@@ -6,11 +6,11 @@ import { getFilteredItems } from "../../data/queries";
 
 import placeholder from "../../assets/placeholder.jpg";
 
-const ItemPreview = ({ item }: { item: IItem }) => {
+const ItemPreview = ({ item, index }: { item: IItem; index: number}) => {
     const imageUrl: string = !!item.picture ? item.picture[0] : placeholder;
 
     return (
-        <div className="item-preview">
+        <div className={`item-preview item--${index}`}>
             <img src={imageUrl} title={item.product.name} />
         </div>
     )
@@ -42,9 +42,9 @@ export const Category = ({ type, addFilter }: { type: CategoryEnum; addFilter })
                 {type}
             </div>
             <div className="items">
-                {!!items && items.slice(0, 5).map((item, i) => {
+                {!!items && items.slice(0, 6).map((item, i) => {
                     return (
-                        <ItemPreview item={item} key={i} />
+                        <ItemPreview item={item} key={i} index={i} />
                     )
                 })}
             </div>
