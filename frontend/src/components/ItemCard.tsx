@@ -62,7 +62,7 @@ export const ItemCard = ({ item, owned }: { item: IItem; owned?: boolean }) => {
                             <span>{renderForSaleText()}</span>
                         </div>
                     )}
-                    {!owned && <span className="seller">{item.owner.name}</span>}
+                    {!owned && <span className="seller">{!!item.owner && item.owner.name}</span>}
                     <span className="condition">{item.condition}</span>
                     <span className="size">{item.size}</span>
                     {!owned && (

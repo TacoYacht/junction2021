@@ -12,6 +12,18 @@ export interface IItem {
     forSwap?: boolean;
 }
 
+export interface INewItemData {
+    productId: string;
+    status?: string;
+    picture?: string[];
+    price?: string;
+    condition: string;
+    created: string;
+    size: string;
+    forSale?: boolean;
+    forSwap?: boolean;
+}
+
 export interface ICategory {
     name: string;
     id: string;

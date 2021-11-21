@@ -5,12 +5,13 @@ import { ReactComponent as CameraIcon } from '../assets/camera.svg';
 
 import '../styles/Search.css';
 
-export const Search = () => {
+export const Search = ({ setFilter }: { setFilter }) => {
+
   return (
     <div className="search">
       <SearchIcon className="search-icon" />
       <CameraIcon className="camera-icon" />
-      <input type="text" placeholder="Search" />
+      <input type="text" placeholder="Search" onChange={(e) => setFilter(e.target.value)} />
     </div>
   );
 } 

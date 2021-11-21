@@ -30,7 +30,6 @@ export const Header = () => {
                 <SavedIcon />
                 <ShoppingCartIcon />
             </div>
-            <Search />
         </header>
     );
 }

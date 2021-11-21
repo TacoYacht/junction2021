@@ -6,6 +6,7 @@ import { getMyItems } from "../../data/queries";
 import { ItemCard } from "../ItemCard";
 
 import { ReactComponent as NoItems } from "../../assets/no_own_items.svg";
+import { Search } from "../Search";
 
 const NoItemsYet = () => {
     return(
@@ -24,12 +25,18 @@ const NoItemsYet = () => {
 
 export const MyItems = () => {
     const [items, setItems] = useState<IItem[]>();
+    const [filter, setFilter] = useState<string>("");
 
     useEffect(() => {
         if (!items) {
             getItems();
         } 
-    })
+        if (filter) {
+            setItems(items.filter(item => item.product.name.toLowerCase().includes(filter)))
+        } else {
+            getItems();
+        }
+    }, [filter])
 
     async function getItems() {
         const myItems = await getMyItems();
@@ -39,6 +46,7 @@ export const MyItems = () => {
     return (
         <div className="my-items">
             <div className="items">
+                <Search setFilter={setFilter} />
                 {!!items && items.length > 0 ? items.map((item, i) => {
                     return (
                         <ItemCard item={item} owned={true} key={i} />
