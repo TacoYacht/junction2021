@@ -85,7 +85,9 @@ else if (process.argv[2].toLowerCase() === 'load_products') {
                     name: p.name,
                     category: await Category.findOne({ name: p.category }),
                     pattern: await Pattern.findOne({ name: p.pattern }),
-                    availableColors: p.availableColors
+                    availableColors: p.availableColors,
+                    originalPrice: Number(p.originalPrice),
+                    image: p.image
                 })
                 await product.save()
             }
