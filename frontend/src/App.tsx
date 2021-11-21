@@ -5,6 +5,8 @@ import { Header } from './components/Header';
 import { AddNew } from "./components/my-items/AddNew";
 import { MyItems } from "./components/my-items/MyItems";
 import { Shop } from "./components/shop/Shop";
+import { Profile } from "./components/Profile";
+
 import './styles/App.css';
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
             <MyItems />
           </Route>
           <Route path="/profile">
-            <h2>My profile</h2>
+            <Profile />
           </Route>
           <Route path="/add-item">
             <AddNew />

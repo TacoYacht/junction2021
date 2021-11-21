@@ -1,0 +1,155 @@
+.profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 136px;
+}
+.main_profile {
+    margin: 0 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 104px;
+    justify-content: space-around;
+    align-content: flex-end;
+}
+.personal_information {
+    margin: 0 0;
+    padding: 8px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 125%;
+    color: rgba(12, 38, 31, 0.65);
+}
+.main_frame {
+    margin: 0 0;
+    width: 281px;
+    display: flex;
+    flex-direction: row;
+    height: 62px;
+    justify-content: space-around;
+}
+.settings {
+    margin: 14px 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-self: flex-start;
+    justify-self: flex-start;
+}
+.avatar {
+    margin: 0 0;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-self: flex-start;
+    border-color: black;
+}
+.text_information {
+    margin: 0 0 0 10px;
+    width: 75%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
+}
+.name {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 26px;
+    color: rgba(12, 38, 31, 0.96);
+    align-self: flex-start;
+}
+
+.location {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 166.7%;
+    color: rgba(12, 38, 31, 0.65);
+    align-self: flex-start;
+}
+
+.small_text {
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 125%;
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    color: rgba(12, 38, 31, 0.65);
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.heart {
+    margin: 0 4px;
+    align-self: center;
+    justify-self: center;
+}
+
+.rectangle {
+    margin: 0 0 0 4px;
+    width: 204px;
+}
+
+.small_ellipse {
+    align-self: center;
+}
+
+.navigation {
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 125%;
+    text-align: right;
+    color: rgba(12, 38, 31, 0.65);
+}
+
+.benefitsContainer {
+    margin: 20px;
+    height: 1000px;
+}
+
+.wellDone{
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 26px;
+    color: rgba(12, 38, 31, 0.96);
+}
+
+.heartsText{
+    font-family: Work Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 166%;
+}
