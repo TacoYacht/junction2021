@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-dropdown";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 import 'react-dropdown/style.css';
 
@@ -8,9 +8,10 @@ import { IItem, INewItemData, IProduct } from "../../data/model";
 import { createItem, getAllProducts } from "../../data/queries";
 
 export const AddNew = () => {
+    const [location, setLocation] = useLocation();
     const [products, setAllProducts] = useState<IProduct[]>();
     const [itemData, setItemData] = useState<INewItemData>({
-        productId: "",
+        product: undefined,
         status: "",
         picture: [],
         price: 0,
@@ -25,6 +26,8 @@ export const AddNew = () => {
     const productOptions = !!products && products.map(p => { 
         return { label: p.name, value: p.id };
     });
+    
+    const canSubmit = !!itemData.condition && itemData.product && itemData.size;
 
     useEffect(() => {
         if (!products) {
@@ -38,7 +41,8 @@ export const AddNew = () => {
     }
 
     function createNewItem() {
-        createItem(itemData.productId, itemData.age, itemData.condition, itemData.size, itemData.forSale, itemData.forSwap, itemData.price);
+        createItem(itemData.product, itemData.age, itemData.condition, itemData.size, itemData.forSale, itemData.forSwap, itemData.price);
+        setLocation("/my-items");
     }
 
     function updateItemData(e) {
@@ -46,7 +50,8 @@ export const AddNew = () => {
     }
 
     function selectProduct(option) {
-        setItemData({...itemData, productId: option.value })
+        const selected: IProduct = !!products && products.find(p => p.id === option.value);
+        !!selected && setItemData({...itemData, product: selected })
     }
 
     function selectSize(option) {
@@ -57,15 +62,16 @@ export const AddNew = () => {
         setItemData({...itemData, condition: option.value })
     }
 
-    function getSelectedProduct(): IProduct | undefined {
-        const sp = !!products && products.find(p => p.id === itemData.productId);
-        if (sp) return sp;
+    function selectPurpose(option) {
+        if (option.value === "For sale") {
+            setItemData({...itemData, forSale: true });
+        } else if (option.value === "For sale") {
+            setItemData({...itemData, forSwap: true });
+        }
     }
 
     function getSelectedProductOption() {
-        const sp = !!products && products.find(p => p.id === itemData.productId);
-
-        if (sp) return { value: sp.id, label: sp.name };
+        if (itemData.product) return { value: itemData.product.id, label: itemData.product.name };
     }
 
     return (
@@ -73,7 +79,26 @@ export const AddNew = () => {
             <form onSubmit={createNewItem} className="new-item-form">
                 <div className="row">
                     <Dropdown options={productOptions} onChange={selectProduct} value={getSelectedProductOption()} placeholder="Select product" />
-                    {!!itemData.productId && !!getSelectedProduct() && getSelectedProduct().category.name}
+                    {!!itemData.product ? itemData.product.category.name : <i>Category will be determined from product</i>}
+                </div>
+                <div className="row sell-or-swap">   
+                    <span>Purpose:</span> 
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={itemData.forSale}
+                            onChange={e => setItemData({...itemData, forSale: e.target.checked})}
+                        />
+                        Sell
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={itemData.forSwap}
+                            onChange={e => setItemData({...itemData, forSwap: e.target.checked})}
+                        />
+                        Swap
+                    </label>
                 </div>
                 <div className="row">
                     <Dropdown options={["S", "M", "L", "XL"]} onChange={selectSize} placeholder="Select size" />
@@ -84,13 +109,15 @@ export const AddNew = () => {
                 <div className="row">
                     <Dropdown options={['New', 'Excellent', 'Good', 'Decent', 'Needs repair']} onChange={selectCondition} placeholder="Select condition" />
                 </div>
-                <div className="row">
-                    <input type="number" name="price" onChange={updateItemData} placeholder="Set price in €" />
-                </div>
+                {itemData.forSale && (
+                    <div className="row">
+                        <input type="number" name="price" onChange={updateItemData} placeholder="Set price in €" />
+                    </div>
+                )}
                 <div className="row">
                     <input type="textarea" name="description" onChange={updateItemData} placeholder="Set description" />
                 </div>
-                <button type="submit" className="add-item">Add this to your items!</button>
+                <button type="submit" disabled={!canSubmit} className="add-item">Add this to your items!</button>
             </form>
             <Link to="/my-items">Cancel</Link>
         </div>

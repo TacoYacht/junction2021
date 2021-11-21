@@ -80,6 +80,17 @@ button.add-item:focus-within {
   margin-bottom: 24px;
 }
 
+.add-new-item .row.sell-or-swap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.add-new-item .row.sell-or-swap span {
+  font-weight: 600;
+}
+
+
 .new-item-form input {
   padding: 8px;
   background: #EFF2F1;
@@ -88,6 +99,14 @@ button.add-item:focus-within {
   font-size: 14px;
   font-family: inherit;
   text-align: center;
+}
+
+.new-item-form label {
+  text-align: center;
+}
+
+.new-item-form .row:first-of-type .Dropdown-root {
+  margin-bottom: 1rem;
 }
 
 .new-item-form input:focus-visible {

@@ -1,16 +1,13 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { useRoute } from "wouter";
+import React, { Fragment } from "react";
 
-import { CategoryEnum, IItem } from "../data/model";
-import { getFilteredItems } from "../data/queries";
+import { IItem } from "../data/model";
 
-import placeholder from "../assets/placeholder.jpg";
 import { ReactComponent as SaleIcon } from "../assets/sale.svg";
 import { ReactComponent as SwapIcon } from "../assets/swap.svg";
 
 
 export const ItemCard = ({ item, owned }: { item: IItem; owned?: boolean }) => {
-    const imageUrl: string = !!item.picture ? item.picture[0] : placeholder;
+    const imageUrl: string = !!item.picture && item.picture[0];
 
     function isForSale() {
         return item.status === "for sale" || item.forSale === true;
@@ -38,7 +35,7 @@ export const ItemCard = ({ item, owned }: { item: IItem; owned?: boolean }) => {
 
     return (
         <div className="item-card">
-            <img src={imageUrl} title={item.product.name} />
+            {!!imageUrl && <img src={imageUrl} title={item.product.name} />}
             <div className="item-card-info">
                 <div className="item-card-row">
                     <span className="name">{item.product.name}</span>
