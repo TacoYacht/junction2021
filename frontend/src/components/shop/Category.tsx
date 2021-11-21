@@ -10,7 +10,7 @@ const ItemPreview = ({ item, index }: { item: IItem; index: number}) => {
     const imageUrl: string = !!item.picture ? item.picture[0] : placeholder;
 
     return (
-        <div className={`item-preview item--${index}`}>
+        <div className={`item-preview category-item--${index}`}>
             <img src={imageUrl} title={item.product.name} />
         </div>
     )
@@ -41,7 +41,7 @@ export const Category = ({ type, addFilter }: { type: CategoryEnum; addFilter })
             <div className="category-name">
                 {type}
             </div>
-            <div className="items">
+            <div className="category-items">
                 {!!items && items.slice(0, 6).map((item, i) => {
                     return (
                         <ItemPreview item={item} key={i} index={i} />
