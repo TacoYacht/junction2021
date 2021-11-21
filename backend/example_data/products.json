@@ -103,5 +103,81 @@
             "black"
         ],
         "image": "https://www.marimekko.com/media/catalog/product/0/9/090593-900_X199785_20_1621234728.jpg"
+    },
+    {
+        "name": "Karla Chain",
+        "category": "Shoulder bags",
+        "originalPrice": "225",
+        "availableColors": [
+            "pink",
+            "black"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090418-900_X191809_20_1636033032.jpg"
+    },
+    {
+        "name": "Leimea",
+        "category": "Canvas bags",
+        "originalPrice": "95",
+        "availableColors": [
+            "black"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090805-009_X219530_20_1637149221.jpg"
+    },
+    {
+        "name": "Pasi",
+        "category": "Shoulder bags",
+        "originalPrice": "150",
+        "availableColors": [
+            "black"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/4/049599-009_X77656_10_1598369102.jpg"
+    },
+    {
+        "name": "Lolly",
+        "category": "Backpacks",
+        "originalPrice": "115",
+        "availableColors": [
+            "black",
+            "red"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/9/090803-009_X219517_20_1637150607.jpg"
+    },
+    {
+        "name": "Lokki",
+        "category": "Bedding",
+        "originalPrice": "69",
+        "availableColors": [
+            "white, beige",
+            "beige, blue, white"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/7/071291-580_X187571_10_1625284623.jpg"
+    },
+    {
+        "name": "Kaksoset",
+        "category": "Home decor",
+        "originalPrice": "59",
+        "availableColors": [
+            "orange, linen, red"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/7/071124-820_X184773_10_1622261164.jpg"
+    },
+    {
+        "name": "Pieni Karhuemo",
+        "category": "Kitchen & dining",
+        "originalPrice": "40",
+        "availableColors": [
+            "blue, beige"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/7/071178-650_X184707_10_1625681182.jpg"
+    },
+    {
+        "name": "Räsymatto",
+        "category": "Kitchen & dining",
+        "originalPrice": "18",
+        "availableColors": [
+            "gray, black"
+        ],
+        "image": "https://www.marimekko.com/media/catalog/product/0/7/070066-990_X139019_10_1598370020.jpg"
     }
+
 ]
