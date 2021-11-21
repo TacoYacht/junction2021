@@ -37,6 +37,7 @@ export interface IProduct {
     name: string;
     id: string;
     image?: string;
+    originalPrice?: number;
 }
 
 export interface IUser {

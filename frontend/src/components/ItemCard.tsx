@@ -33,13 +33,18 @@ export const ItemCard = ({ item, owned }: { item: IItem; owned?: boolean }) => {
         }
     }
 
+    function getPrice(price: string | number) {
+        return Number(price).toFixed(2) + "€";
+    }
+
     return (
         <div className="item-card">
             {!!imageUrl && <img src={imageUrl} title={item.product.name} />}
             <div className="item-card-info">
                 <div className="item-card-row">
                     <span className="name">{item.product.name}</span>
-                    <span className="price">{Number(item.price).toFixed(2) + " €"}</span>
+                    <span className="price">{getPrice(item.price)}</span>
+                    <span className="original-price">{`(${getPrice(item.product.originalPrice)})`}</span>
                 </div>
                 <div className="item-card-row">
                     {owned && (
