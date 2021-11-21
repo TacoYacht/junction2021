@@ -12,6 +12,7 @@
 
 .my-items {
   margin: 0 21px;
+  width: 100%;
 }
 
 button.add-item {
