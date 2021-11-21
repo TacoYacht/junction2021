@@ -9,7 +9,7 @@ import { useLocation } from "wouter";
 import '../../styles/Shop.css';
 
 export const Shop = () => {
-    const [filters, setFilters] = useState(["A filter"]);
+    const [filters, setFilters] = useState([]);
     const [location, setLocation] = useLocation();
 
 
