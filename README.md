@@ -1,17 +1,28 @@
-# Junction2021
+# ❤️WeLoveMari❤️
 
-Junction2021 Hackathon project
+- 🔥 **Young and sustainable** platform for selling and trading pre-loved Marimekko products.
+- ✂️ **Optional repair service** for any item ordered through the platform. 🔧
+
+> Disclaimer: The WebApp has been developed mobile-first.
+> It is functional on bigger screens but works best with smaller devices.
+
+Demo-app available at https://junction-2021.herokuapp.com
+
+## Team
+
+- **Satria Sutisna**: Design 
+- **Mari Porko**: Frontend
+- **Tommi Askola - Henri Merilä - Miri Piiroinen**: Backend and Database 
+
 
 ## Project explanation
 
-Lorem ipsum    
+Resale platform for pre-owned Marimekko products.
 
-## Folder structure
-    
-    - frontend
-    - backend
 
-## How to use
+## How to build
+
+> The project doesn't provide guidance for deploying the MongoDB.
 
 - Install/Update dependencies: `./install.sh`
 - Start the App: `npm start`
@@ -21,3 +32,10 @@ Lorem ipsum
 ## Notes
 
 - Requires node version 16
+
+### Tools Used
+
+- React
+- Node.js
+- MongoDB
+- Figma
