@@ -69,7 +69,6 @@ else if (process.argv[2].toLowerCase() === 'load_patterns') {
             console.log("File read failed:", err)
             return
         }
-        console.log('File data:', jsonString)
         try {
             const json = JSON.parse(jsonString)
             for (const p of json) {
@@ -93,7 +92,6 @@ else if (process.argv[2].toLowerCase() === 'load_products') {
             console.log("File read failed:", err)
             return
         }
-        console.log('File data:', jsonString)
         try {
             const json = JSON.parse(jsonString)
             for (const p of json) {
@@ -117,7 +115,6 @@ else if (process.argv[2].toLowerCase() === 'load_categories') {
             console.log("File read failed:", err)
             return
         }
-        console.log('File data:', jsonString)
         try {
             const json = JSON.parse(jsonString)
             for (p of json) {
@@ -133,9 +130,8 @@ else if (process.argv[2].toLowerCase() === 'load_categories') {
                     })
                     await newSubcategory.save()
                 }
-
-                mongoose.connection.close()
             }
+            mongoose.connection.close()
         } catch (err) {
             console.log('Error parsing JSON string:', err)
         }
@@ -148,7 +144,6 @@ else if (process.argv[2].toLowerCase() === 'load_users') {
             console.log("File read failed:", err)
             return
         }
-        console.log('File data:', jsonString)
         try {
             const json = JSON.parse(jsonString)
             for (p of json) {
@@ -187,16 +182,19 @@ else if (process.argv[2].toLowerCase() === 'load_items') {
             // Take 20 times random sample from json
             for (let x = 0; x < 20; x++) {
                 const randItem = json[Math.floor(Math.random() * json.length)]
+                const category = await Category.findOne({name: randItem.category})
+                const categoryParent = await Category.findById(category.parent)
+                // const categoryParent = await Category.findOne({_id: category.parent._id})
                 const randConditionIndex = Math.floor(Math.random() * conditions.length)
-
                 const item = new Item({
                     owner: users[Math.floor(Math.random() * users.length)],
                     condition: conditions[randConditionIndex],
-                    sell_status: bool_options[Math.floor(Math.random() * bool_options.length)],
-                    swap_status: bool_options[Math.floor(Math.random() * bool_options.length)],
+                    forSale: bool_options[Math.floor(Math.random() * bool_options.length)],
+                    forSwap: bool_options[Math.floor(Math.random() * bool_options.length)],
                     age: Math.floor(Math.random() * (20 + 1)),
                     price: (randItem.originalPrice * condition_prices[randConditionIndex]),
-                    size: size_options[Math.floor(Math.random() * size_options.length)],
+                    size: ((categoryParent.name === "Clothing") ?
+                        size_options[Math.floor(Math.random() * size_options.length)] : null),
                     date: randomDate(new Date(2012, 0, 1), new Date()),
                     picture: randItem.image,
                     product: await Product.findOne({ name: randItem.name })
@@ -219,7 +217,7 @@ else if (process.argv[2].toLowerCase() === 'generate_wishlists') {
         for (let i = 0; i < numberOfWishes; i++) {
             const randUser = users[Math.floor(Math.random() * users.length)]
             const randProduct = products[Math.floor(Math.random() * products.length)]
-            const existingWish = await Wish.findOne({product: randProduct, user: randUser})
+            const existingWish = await Wish.findOne({ product: randProduct, user: randUser })
             if (existingWish != undefined) {
                 console.log(`${randUser.name} already has ${randProduct.name} in wishlist`)
             }

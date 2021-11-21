@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { AddNew } from "./components/my-items/AddNew";
 import { MyItems } from "./components/my-items/MyItems";
 import { Shop } from "./components/shop/Shop";
+import { Explore } from "./components/Explore";
 
 import './styles/App.css';
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" component={Shop} />
           <Route path="/shop" component={Shop} />
           <Route path="/shop/:category" component={Shop} />
+          <Route path="/explore" component={Explore} />
           <Route path="/my-items">
             <MyItems />
           </Route>
