@@ -153,10 +153,24 @@ app.get('/api/users/:id/items', async (request, response) => {
 })
 
 
-app.get('/api/products', (req, res) => {
-  Product.find({}).then(products => {
-    res.json(products)
+app.get('/api/products', async (req, res) => {
+  const products = await Product.find({}).populate({
+    path: 'category',
+    populate: {
+      path: 'parent'
+    }
   })
+  res.json(products)
+})
+
+app.get('/api/products/:id', async (req, res) => {
+  const product = await Product.findById(req.params.id).populate({
+    path: 'category',
+    populate: {
+      path: 'parent'
+    }
+  })
+  res.json(product)
 })
 
 app.post('/api/products', (request, response) => {
@@ -178,6 +192,7 @@ app.post('/api/products', (request, response) => {
     response.json(savedProduct)
   })
 })
+
 
 app.post('/api/patterns', (request, response) => {
   const body = request.body

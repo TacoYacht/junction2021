@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CategoryEnum, IItem } from "./model";
+import { CategoryEnum, IItem, ICategory } from "./model";
 
 export async function getFilteredItems(category?: CategoryEnum): Promise<IItem[] | undefined> {
     try {
@@ -57,6 +57,16 @@ export async function getAllProducts(): Promise<IItem[] | undefined> {
         console.log(response)
 
         return response.data;
+
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export async function getCategory(productId): Promise<ICategory | undefined> {
+    try {
+        const response = await axios.get("/api/products/" + productId);
+        return response.data.category;
 
     } catch (e) {
         console.log(e);
