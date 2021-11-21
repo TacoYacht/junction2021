@@ -29,12 +29,6 @@ export const Footer = () => {
                 Shop
             </ActiveLink>
         </div>
-        <div className="footer-block">  
-            <ActiveLink href="/explore">
-                <SearchIcon title="Explore" />
-                Explore
-            </ActiveLink>
-        </div>
         <div className="footer-block">
             <ActiveLink href="/my-items" href2="/add-item">
                 <M title="My items" className="marimekko-icon" />

@@ -32,7 +32,7 @@ export const MyItems = () => {
             getItems();
         } 
         if (filter) {
-            setItems(items.filter(item => item.product.name.toLowerCase().includes(filter)))
+            setItems(items.filter(item => item.product.name.toLowerCase().includes(filter.toLowerCase())))
         } else {
             getItems();
         }
@@ -45,8 +45,8 @@ export const MyItems = () => {
 
     return (
         <div className="my-items">
+            <Search setFilter={setFilter} />
             <div className="items">
-                <Search setFilter={setFilter} />
                 {!!items && items.length > 0 ? items.map((item, i) => {
                     return (
                         <ItemCard item={item} owned={true} key={i} />

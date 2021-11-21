@@ -18,7 +18,7 @@ export const OpenCollection = (params) => {
         }
 
         if (filter) {
-            setItems(items.filter(item => item.product.name.toLowerCase().includes(filter)))
+            setItems(items.filter(item => item.product.name.toLowerCase().includes(filter.toLowerCase())))
         } else {
             getItems();
         }

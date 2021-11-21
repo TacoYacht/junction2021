@@ -10,6 +10,10 @@
   padding-bottom: 60px;
 }
 
+.my-items {
+  margin: 0 21px;
+}
+
 button.add-item {
   padding: 12px 20px;
   background: #FBE7D5;

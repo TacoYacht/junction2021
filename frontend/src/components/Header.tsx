@@ -13,7 +13,6 @@ export const Header = () => {
 
     const pages: Record<string, string> = {
         "shop": "Shop",
-        "explore": "Explore",
         "my-items": "My items",
         "profile": "Profile",
         "add-item": "Add new item",

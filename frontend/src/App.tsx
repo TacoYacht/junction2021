@@ -17,14 +17,8 @@ function App() {
           <Route path="/" component={Shop} />
           <Route path="/shop" component={Shop} />
           <Route path="/shop/:category" component={Shop} />
-          <Route path="/explore">
-            <h2>Explore</h2>
-          </Route>
           <Route path="/my-items">
             <MyItems />
-          </Route>
-          <Route path="/discussion">
-            <h2>Discuss</h2>
           </Route>
           <Route path="/profile">
             <h2>My profile</h2>
