@@ -72,32 +72,27 @@ export const AddNew = () => {
         <div className="add-new-item">
             <form onSubmit={createNewItem} className="new-item-form">
                 <div className="row">
-                    <Dropdown options={productOptions} onChange={selectProduct} value={getSelectedProductOption()} />
+                    <Dropdown options={productOptions} onChange={selectProduct} value={getSelectedProductOption()} placeholder="Select product" />
                     {!!itemData.productId && !!getSelectedProduct() && getSelectedProduct().category.name}
                 </div>
                 <div className="row">
-                    <label htmlFor="size">Size</label>
-                    <Dropdown options={["S", "M", "L", "XL"]} onChange={selectSize} />
+                    <Dropdown options={["S", "M", "L", "XL"]} onChange={selectSize} placeholder="Select size" />
                 </div>
                 <div className="row">
-                    <label htmlFor="color">Color</label>
-                    <Dropdown options={['New', 'Excellent', 'Good', 'Decent', 'Needs repair']} onChange={selectSize} />
+                    <input type="text" onChange={updateItemData} placeholder="Select color"  />
                 </div>
                 <div className="row">
-                    <label htmlFor="condition">Condition</label>
-                    <Dropdown options={['New', 'Excellent', 'Good', 'Decent', 'Needs repair']} onChange={selectCondition} />
+                    <Dropdown options={['New', 'Excellent', 'Good', 'Decent', 'Needs repair']} onChange={selectCondition} placeholder="Select condition" />
                 </div>
                 <div className="row">
-                    <label htmlFor="price">Price</label>
-                    <input type="number" name="price" onChange={updateItemData} />
+                    <input type="number" name="price" onChange={updateItemData} placeholder="Set price in €" />
                 </div>
                 <div className="row">
-                    <label htmlFor="description">Description</label>
-                    <input type="textarea" name="description" onChange={updateItemData} />
+                    <input type="textarea" name="description" onChange={updateItemData} placeholder="Set description" />
                 </div>
-                <button type="submit">Add this to your items!</button>
-                <Link to="/my-items">Cancel</Link>
+                <button type="submit" className="add-item">Add this to your items!</button>
             </form>
+            <Link to="/my-items">Cancel</Link>
         </div>
     );
 }

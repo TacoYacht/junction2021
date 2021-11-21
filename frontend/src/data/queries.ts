@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CategoryEnum, IItem, ICategory, IProduct } from "./model";
+import { CategoryEnum, IItem, ICategory, IProduct, IUser } from "./model";
 
 export async function getFilteredItems(category?: CategoryEnum): Promise<IItem[] | undefined> {
     try {
@@ -28,14 +28,15 @@ export async function getMyItems(): Promise<IItem[] | undefined> {
     }
 }
 
-export async function createItem(productId, age: number, condition, size, forSale?: boolean, forSwap?: boolean, price?: number): Promise<IItem[] | undefined> {
+export async function createItem(productId: string, age: number, condition: string, size, forSale?: boolean, forSwap?: boolean, price?: number): Promise<IItem[] | undefined> {
     const userName = "Porin Marko";
     
     try {
+        const user = await getUserByName(userName);
         const response = await axios.post("/api/items",
         {
             product: productId,
-            owner: userName,
+            owner: user,
             age: age,
             condition: condition,
             size: size,
@@ -44,7 +45,6 @@ export async function createItem(productId, age: number, condition, size, forSal
             forSwap,
             price
         });
-        console.log(response)
 
         return response.data;
 
@@ -63,10 +63,20 @@ export async function getAllProducts(): Promise<IProduct[] | undefined> {
     }
 }
 
-export async function getCategory(productId): Promise<ICategory | undefined> {
+export async function getCategory(productId: string): Promise<ICategory | undefined> {
     try {
         const response = await axios.get("/api/products/" + productId);
         return response.data.category;
+
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export async function getUserByName(userName: string): Promise<IUser | undefined> {
+    try {
+        const response = await axios.get("/api/users/");
+        return response.data.find(user => user.name === userName);
 
     } catch (e) {
         console.log(e);
