@@ -1,25 +1,44 @@
 import React, { useState, useEffect } from "react";
-import Select from "react-select";
+import Dropdown from "react-dropdown";
 import { Link } from "wouter";
 
-import { IItem, INewItemData } from "../../data/model";
+import 'react-dropdown/style.css';
+
+import { IItem, INewItemData, IProduct } from "../../data/model";
+import { createItem, getAllProducts } from "../../data/queries";
 
 export const AddNew = () => {
+    const [products, setAllProducts] = useState<IProduct[]>();
     const [itemData, setItemData] = useState<INewItemData>({
         productId: "",
         status: "",
         picture: [],
-        price: "",
+        price: 0,
+        age: 4,
         condition: "",
         created: new Date().toString(),
         size: "",
         forSale: false,
         forSwap: false,
     });
-    const allProducts = [];
 
-    function createItem() {
-        //todo
+    const productOptions = !!products && products.map(p => { 
+        return { label: p.name, value: p.id };
+    });
+
+    useEffect(() => {
+        if (!products) {
+            getProducts();
+        }
+    })
+
+    async function getProducts() {
+        const all = await getAllProducts();
+        setAllProducts(all);
+    }
+
+    function createNewItem() {
+        createItem(itemData.productId, itemData.age, itemData.condition, itemData.size, itemData.forSale, itemData.forSwap, itemData.price);
     }
 
     function updateItemData(e) {
@@ -30,33 +49,47 @@ export const AddNew = () => {
         setItemData({...itemData, productId: option.value })
     }
 
+    function selectSize(option) {
+        setItemData({...itemData, size: option.value })
+    }
+
+    function selectCondition(option) {
+        setItemData({...itemData, condition: option.value })
+    }
+
+    function getSelectedProduct(): IProduct | undefined {
+        const sp = !!products && products.find(p => p.id === itemData.productId);
+        if (sp) return sp;
+    }
+
+    function getSelectedProductOption() {
+        const sp = !!products && products.find(p => p.id === itemData.productId);
+
+        if (sp) return { value: sp.id, label: sp.name };
+    }
+
     return (
         <div className="add-new-item">
-            <div className="inside-navi">
-                <Link to="/my-items">Cancel</Link>
-                Product details
-                <Link to="/my-items">Next</Link>
-            </div>
-            <form onSubmit={createItem} className="new-item-form">
+            <form onSubmit={createNewItem} className="new-item-form">
                 <div className="row">
-                    <label htmlFor="product">Product</label>
-                    <Select options={allProducts} onChange={selectProduct} value={itemData.productId} />
-                </div>
-                <div className="row">
-                    <label htmlFor="category">Category</label>
-                    <input type="text" name="category" onChange={updateItemData} />
+                    <Dropdown options={productOptions} onChange={selectProduct} value={getSelectedProductOption()} />
+                    {!!itemData.productId && !!getSelectedProduct() && getSelectedProduct().category.name}
                 </div>
                 <div className="row">
                     <label htmlFor="size">Size</label>
-                    <input type="text" name="size" onChange={updateItemData} />
+                    <Dropdown options={["S", "M", "L", "XL"]} onChange={selectSize} />
                 </div>
                 <div className="row">
                     <label htmlFor="color">Color</label>
-                    <input type="text" name="color" onChange={updateItemData} />
+                    <Dropdown options={['New', 'Excellent', 'Good', 'Decent', 'Needs repair']} onChange={selectSize} />
                 </div>
                 <div className="row">
                     <label htmlFor="condition">Condition</label>
-                    <input type="text" name="condition" onChange={updateItemData} />
+                    <Dropdown options={['New', 'Excellent', 'Good', 'Decent', 'Needs repair']} onChange={selectCondition} />
+                </div>
+                <div className="row">
+                    <label htmlFor="price">Price</label>
+                    <input type="number" name="price" onChange={updateItemData} />
                 </div>
                 <div className="row">
                     <label htmlFor="description">Description</label>
