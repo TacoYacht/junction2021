@@ -47,11 +47,11 @@ export const MyItems = () => {
         <div className="my-items">
             <Search setFilter={setFilter} />
             <div className="items">
-                {!!items && items.length > 0 ? items.map((item, i) => {
+                {!!items && items.length > 0 && items.map((item, i) => {
                     return (
                         <ItemCard item={item} owned={true} key={i} />
                     )
-                }) : <NoItemsYet />}
+                })}
             </div>
         </div>
     );

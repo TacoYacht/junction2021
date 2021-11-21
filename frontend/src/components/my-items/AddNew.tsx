@@ -6,6 +6,7 @@ import 'react-dropdown/style.css';
 
 import { IItem, INewItemData, IProduct } from "../../data/model";
 import { createItem, getAllProducts } from "../../data/queries";
+import { calculatePrice } from "../../functions";
 
 export const AddNew = () => {
     const [location, setLocation] = useLocation();
@@ -27,7 +28,7 @@ export const AddNew = () => {
         return { label: p.name, value: p.id };
     });
     
-    const canSubmit = !!itemData.condition && itemData.product && itemData.size;
+    const canSubmit = itemData.forSale ? !!itemData.condition && !!itemData.product && !!itemData.size && !!itemData.price : !!itemData.condition && !!itemData.product && !!itemData.size;
 
     useEffect(() => {
         if (!products) {
@@ -41,7 +42,8 @@ export const AddNew = () => {
     }
 
     function createNewItem() {
-        createItem(itemData.product, itemData.age, itemData.condition, itemData.size, itemData.forSale, itemData.forSwap, itemData.price);
+        const price = itemData.forSale ? itemData.price : itemData.product.originalPrice;
+        createItem(itemData.product, itemData.age, itemData.condition, itemData.size, itemData.forSale, itemData.forSwap, price);
         setLocation("/my-items");
     }
 
@@ -59,15 +61,7 @@ export const AddNew = () => {
     }
 
     function selectCondition(option) {
-        setItemData({...itemData, condition: option.value })
-    }
-
-    function selectPurpose(option) {
-        if (option.value === "For sale") {
-            setItemData({...itemData, forSale: true });
-        } else if (option.value === "For sale") {
-            setItemData({...itemData, forSwap: true });
-        }
+        setItemData({...itemData, condition: option.value, price: calculatePrice(itemData.product.originalPrice, option.value) })
     }
 
     function getSelectedProductOption() {
@@ -111,7 +105,7 @@ export const AddNew = () => {
                 </div>
                 {itemData.forSale && (
                     <div className="row">
-                        <input type="number" name="price" onChange={updateItemData} placeholder="Set price in €" />
+                        <input type="number" name="price" onChange={updateItemData} defaultValue={itemData.price === 0 ? undefined : itemData.price} placeholder="Set price in €" />
                     </div>
                 )}
                 <div className="row">

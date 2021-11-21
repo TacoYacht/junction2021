@@ -166,6 +166,16 @@
     font-weight: 600;
 }
 
+.item-card .item-card-info .item-card-row .price {
+    margin-right: 8px;
+    color: #0C261FA6;
+}
+
+.item-card .item-card-info .item-card-row .original-price {
+    text-decoration: line-through;
+    color: #0C261FA6;
+}
+
 .item-card .item-card-info .condition, .item-card .item-card-info .size {
     padding: 4px 8px;
     margin-left: 4px;
