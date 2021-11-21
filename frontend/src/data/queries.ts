@@ -28,19 +28,19 @@ export async function getMyItems(): Promise<IItem[] | undefined> {
     }
 }
 
-export async function createItem(productId: string, age: number, condition: string, size, forSale?: boolean, forSwap?: boolean, price?: number): Promise<IItem[] | undefined> {
+export async function createItem(product: IProduct, age: number, condition: string, size, forSale?: boolean, forSwap?: boolean, price?: number): Promise<IItem[] | undefined> {
     const userName = "Porin Marko";
     
     try {
         const user = await getUserByName(userName);
         const response = await axios.post("/api/items",
         {
-            product: productId,
-            owner: user,
+            product: product.id,
+            owner: user.id,
             age: age,
             condition: condition,
             size: size,
-            picture: null,
+            picture: product.image,
             forSale,
             forSwap,
             price

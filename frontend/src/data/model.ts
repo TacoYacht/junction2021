@@ -13,7 +13,7 @@ export interface IItem {
 }
 
 export interface INewItemData {
-    productId: string;
+    product: IProduct;
     status?: string;
     picture?: string[];
     price?: number;
@@ -36,6 +36,7 @@ export interface IProduct {
     print: string;
     name: string;
     id: string;
+    image?: string;
 }
 
 export interface IUser {
